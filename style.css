@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(10, 120, 209);
+    color: rgba(255, 255, 255, 0.89);
+    margin-bottom: 70px;
+   }
+   
+.nav-links a {
+   color: #fff;
+   }
+   
+   /* LOGO */
+   
+.logo {
+    font-size: 32px;
+}
+.list {
+    font-size: 36px;
+    font-style: serif;
+}
+
+.option {
+    border: 1px inset #f1edee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(223, 229, 235);
+    color: rgba(0, 0, 0, 0.89);
+    width: 800px;
+    margin-left: 200px;
+}
+
+.mn {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.btn{
+    background-color: rgb(10, 120, 209);
+    width: 80px;
+    height: 30px;
+}
