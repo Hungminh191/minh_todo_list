@@ -23,9 +23,16 @@ html, body{
 .logo {
     font-size: 32px;
 }
+
 .list {
     font-size: 36px;
     font-style: serif;
+}
+
+.list1 {
+    font-size: 36px;
+    font-style: serif;
+    margin-left: 1px;
 }
 
 .option {
@@ -43,9 +50,27 @@ html, body{
     margin-bottom: 10px;
 }
 
+.option1 {
+    border: 1px inset #f1edee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(10, 120, 209);
+    color: rgb(223, 229, 235);
+    border-radius: 8px;
+    text-align: left;
+    width: 800px;
+    /* margin-left: 500px; */
+    margin-bottom: 10px;
+    grid-column: 4 / 5;
+}
+
 .mn {
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 70px;
+    margin-right: 70px;
 }
 
 .btn{
@@ -55,8 +80,10 @@ html, body{
     font-size: 14px;
     border: none;
     box-shadow: -2px 2px #b3b3b3, -2px 2px #626262, -1px 1px #525252;
-    margin-top: 25px;
-    margin-bottom: 60px;
+    /* margin-top: 25px; */
+    margin-bottom: 30px;
+    margin-left: 490px;
+    
     border-radius: 20px;
     outline: none;
     cursor: pointer;
@@ -67,6 +94,7 @@ html, body{
 
 .body {
     font-family: "Manrope", sans-serif;
+    margin-left: 100px;
 }
 
 .pagination {
@@ -89,21 +117,59 @@ html, body{
     color: white;
 }
 
+.pagination1 {
+    text-align: left;
+    margin: 0 auto;
+    width: 327px;
+    display: block;
+    height: 100px;
+    margin-left: 267px;
+}
+
+.pagination1 a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination1 a.active {
+    background-color: #0983bb;
+    color: white;
+}
+
 .detail {
     border: 1px inset #f1edee;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding: 10px; */
-    background-color: rgba(53, 44, 43, 0.068);
-    color: rgb(1, 6, 12);
+    background-color: rgb(10, 120, 209);
+    color: rgb(223, 229, 235);
     border-radius: 8px;
     text-align: left;
-    width: 600px;
-    height: 120px;
-    margin-left: 650px;
-    margin-bottom: 10px;
+    width: 237px;
+    height: 152px;
+    font-size: 25px;
+    margin-left: 820px;
+    margin-bottom: 57px;
+    padding-left: 0px;
+    padding-right: 20px;
+    padding-top: 1px;
+    padding-bottom: 17px;
+    margin-left: 281px;
+    margin-bottom: 501px;
 }
 
-  
+ul {
+    list-style:none;
+    /* margin-left: 0px; */
+    
+}
 
+.title {
+    margin-left: 40px;
+}
+  
+.detail1 {
+    display: inline;
+}
