@@ -54,7 +54,8 @@ html, body{
     border-radius: 300px;
     border: none;
     cursor: pointer;
-    background-color: rgb(10, 120, 209); ;
+    background-color: rgb(10, 120, 209);
+    
 }
 
 .option1 {
@@ -71,18 +72,32 @@ html, body{
     /* margin-left: 500px; */
     margin-bottom: 10px;
     grid-column: 4 / 5;
+    cursor: pointer;
 }
+
+.option1:hover {background: rgb(5, 76, 134);}
 
 .option1 button{
     border-radius: 300px;
     border: none;
     cursor: pointer;
     background-color: rgb(10, 120, 209); 
+    
 }
 
-
+/* .option1 i{
+    display: none;
+} */
 
 .mn {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    margin-right: 70px;
+    margin-left: 487px;
+}
+
+.mn1 {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 70px;
@@ -110,6 +125,7 @@ html, body{
     font-family: "Manrope", sans-serif;
     margin-left: 100px;
 }
+
 
 .pagination {
     text-align: center;
@@ -168,8 +184,28 @@ html, body{
     padding-right: 40px;
     padding-top: 1px;
     padding-bottom: 0px;
-    margin-left: 182px;
+    margin-left: 489px;
     margin-bottom: 256px;
+}
+
+.detail1 {
+    border: 1px inset #f1edee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(10, 120, 209);
+    color: rgb(223, 229, 235);
+    border-radius: 8px;
+    text-align: left;
+    width: 465px;
+    height: 411px;
+    font-size: 25px;
+    padding-left: 0px;
+    padding-right: 40px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+    margin-left: 182px;
+    margin-bottom: 580px;
 }
 
 ul {
@@ -191,7 +227,7 @@ ul {
     color: rgb(223, 229, 235);
     border-radius: 8px;
     text-align: left;
-    width: 386px;
+    width: 477px;
     height: 400px;
     font-size: 25px;
     padding-left: 0px;
@@ -201,6 +237,35 @@ ul {
     margin-left: 182px;
     margin-bottom: 256px;
 }
+
+.detail1 input {
+    margin-right: 76px;
+}
+
+.detail2 {
+    border: 1px inset #f1edee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(10, 120, 209);
+    color: rgb(223, 229, 235);
+    border-radius: 8px;
+    text-align: left;
+    width: 386px;
+    height: 463px;
+    font-size: 25px;
+    padding-left: 0px;
+    padding-right: 40px;
+    padding-top: -47px;
+    padding-bottom: 22px;
+    margin-left: 182px;
+    margin-bottom: 0px;
+}
+
+#detail2 {
+    display: none;
+}
+
 li {
     margin-top: 30px;
 }
@@ -225,8 +290,9 @@ li {
     color: #0e0d0d;
 }
 
-.detail1 input {
-    margin-right: 76px;
+.editbtn a{
+    color: #0e0d0d;
+    font-weight: bold;
 }
 
 .input {
@@ -299,3 +365,54 @@ li {
     max-height: 100vh;
     /* transition: opacity 0.2s, z-index 0.2s, max-height: 0.2s; */
   }
+
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropup {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropup-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    bottom: 50px;
+    z-index: 1;
+  }
+  
+  .dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropup-content a:hover {background-color: #ccc}
+  
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+  
+  .dropup:hover .dropbtn {
+    background-color: #2980B9;
+  }
+
+  #detail{
+    display: none;
+  }
+
+.close{
+    cursor: pointer;
+    margin-left: 427px;
+    padding: 5px 10px;
+}
+
+.close:hover {background: rgb(5, 76, 134);}
