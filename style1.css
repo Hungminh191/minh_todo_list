@@ -35,7 +35,7 @@ html, body{
     margin-left: 1px;
 }
 
-.option {
+/* .option {
     border: 1px inset #f1edee;
     display: flex;
     align-items: center;
@@ -56,6 +56,10 @@ html, body{
     cursor: pointer;
     background-color: rgb(10, 120, 209);
     
+} */
+
+.option p{
+    display: none;
 }
 
 .option1 {
@@ -88,6 +92,10 @@ html, body{
 .option1 span{
     display: flex;
 }
+
+/* .option1 p{
+    display: none;
+} */
 
 .mn {
     width: 100%;
@@ -198,7 +206,7 @@ html, body{
     border-radius: 8px;
     text-align: left;
     width: 465px;
-    height: 411px;
+    height: 509px;
     font-size: 25px;
     padding-left: 0px;
     padding-right: 40px;

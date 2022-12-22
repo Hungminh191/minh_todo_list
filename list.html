@@ -21,11 +21,19 @@
                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
             </button>
             <div class="mn" id="list">
-                <span class="option1" id="task1" onclick="showDetail('name')">
-                    <span>
+                <span class="option1" id="task1" onclick="showDetail('name', 'time', 'address')">
+                    <span class="option">
                         <input type="checkbox">
-                        <p id="name">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
-                        <!-- <i class="fa fa-dot-circle-o"></i> -->
+                        <span id="name">
+
+                        </span>
+                        <p id="time">
+
+                        </p>
+                        <p id="address">
+
+                        </p>
+                        <i class="fa fa-dot-circle-o"></i>
                     </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
@@ -35,10 +43,18 @@
                         </div>
                     </div>
                 </span>
-                <span class="option1" onclick="showDetail('name1')">
-                    <span>
+                <span class="option1" id="task1" onclick="showDetail('name1', 'time1', 'address1')">
+                    <span class="option">
                         <input type="checkbox">
-                        <p id="name1">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                        <span id="name1">
+
+                        </span>
+                        <p id="time1">
+
+                        </p>
+                        <p id="address1">
+
+                        </p>
                         
                     </span>                        
                     <div class="dropup">
@@ -394,16 +410,21 @@
                         <ul>
                             <span class="close" onclick="close1()">&times;</span>
                             <p>Chi tiết công việc</p>
+
                             <span>Tên công việc:</span>
                             <p id="name-detail">
                                 
                             </p>
-                            <p>
-                                Thời gian : 13/12/2022 8AM
+
+                            <span>Thời gian:</span>
+                            <p id="time-detail">
+                                
                             </p>
-                            <li>
-                                Địa điểm : 97 NCT
-                            </li>
+
+                            <span>Địa điểm:</span>
+                            <p id="address-detail">
+                                
+                            </p>
                             <li>
                                 <div class="editbtn">
                                     <nobr>
@@ -434,11 +455,11 @@
                                     
                             <li>
                                 Thời gian : 
-                                <input type="text" class="input" value="13/12/2022 8AM">
+                                <input type="text" class="input" id="time-edit" >
                             </li>
                             <li>
                                 Địa điểm :
-                                <input type="text" class="input" value="97 NCT">
+                                <input type="text" class="input" id="address-edit">
                             </li>
                             <li>
                                 <div class="editbtn">
