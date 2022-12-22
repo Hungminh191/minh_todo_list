@@ -1,5 +1,7 @@
+var idselected = null;
+
 function showDetail(id) {
-  console.log('13');
+  idselected = id;
   var x = document.getElementById("ds");
   var y = document.getElementById("detail");
   
@@ -13,7 +15,6 @@ function showDetail(id) {
 }
 
 function editBtn(){
-  console.log('10');
   var x = document.getElementById("detail2");
   x.style.display = "block";
 
@@ -22,7 +23,6 @@ function editBtn(){
 }
 
 function close1(){
-  console.log('12');
   var x = document.getElementById("ds");
   var y = document.getElementById("detail");
   
@@ -31,7 +31,6 @@ function close1(){
 }
 
 function saveEdit(){
-  console.log('11');
   var x = document.getElementById("ds");
   var y = document.getElementById("detail");
 
@@ -39,6 +38,75 @@ function saveEdit(){
   y.style.display = "none";
   
   var z = document.getElementById("name-edit").value;
-  // alert(z);
-  document.getElementById("name").innerHTML = z;
+  document.getElementById(idselected).innerHTML = z;
+}
+
+function createBtn(){
+  var x = document.getElementById("ds");
+  var y = document.getElementById("detail");
+  var z = document.getElementById("detail3");
+  var t = document.getElementById("detail1");
+
+  x.style.display = "none";
+  y.style.display = "block";
+  z.style.display = "block";
+  t.style.display = "none";
+}
+
+function addBtn(){
+  
+  var checkbox = document.createElement('input');
+  checkbox.type = "checkbox";
+  
+  var para = document.createElement('p');
+  // var node = document.createTextNode("Họp dự án");
+  var node = document.getElementById("name-add").value;
+  var title = document.createTextNode(node);
+  console.log(node);
+  para.appendChild(title);
+  
+  var span1 = document.createElement('span');
+  span1.appendChild(checkbox);
+  span1.appendChild(para);
+
+  var a = document.createElement('a');
+  var linkText = document.createTextNode("Đóng");
+  a.appendChild(linkText);
+  a.href = "#";
+  
+  var a1 = document.createElement('a');
+  var linkText1 = document.createTextNode("Xoá");
+  a1.appendChild(linkText1);
+  a1.href = "#";
+
+  var div1 = document.createElement('div');
+  div1.appendChild(a);
+  div1.appendChild(a1);
+  div1.className = "dropup-content";
+
+  var btn = document.createElement('button');
+  btn.innerHTML = "<strong>&vellip;</strong>";
+  btn.className = "dropbtn";
+  
+  var div = document.createElement('div');
+  div.appendChild(btn);
+  div.appendChild(div1);
+  div.className = "dropup";
+
+  var span = document.createElement('span');
+  span.appendChild(span1);
+  span.appendChild(div);
+  span.className = "option1";
+  span.setAttribute("onclick", "showDetail()");
+  
+  var element = document.getElementById("list");
+  var child = document.getElementById("task1");
+  // element.appendChild(span);
+  element.insertBefore(span, child);
+
+  var x = document.getElementById("ds");
+  var y = document.getElementById("detail");
+
+  x.style.display = "block";
+  y.style.display = "none";
 }

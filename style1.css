@@ -85,9 +85,9 @@ html, body{
     
 }
 
-/* .option1 i{
-    display: none;
-} */
+.option1 span{
+    display: flex;
+}
 
 .mn {
     width: 100%;
@@ -266,6 +266,10 @@ ul {
     display: none;
 }
 
+#detail3 {
+    display: none;
+}
+
 li {
     margin-top: 30px;
 }
@@ -416,3 +420,7 @@ li {
 }
 
 .close:hover {background: rgb(5, 76, 134);}
+
+/* #name{
+    display: flex;
+} */

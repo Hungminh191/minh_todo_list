@@ -17,17 +17,16 @@
     <div>
         <form class="body" align="center" id="ds">
             <span class="list">Danh sách</span>
-            <button class="btn">
+            <button class="btn" type="button" onclick="createBtn()">
                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
             </button>
-            <div class="mn">
-                <span class="option1" onclick="showDetail('name')">
-                    <div id="name">
+            <div class="mn" id="list">
+                <span class="option1" id="task1" onclick="showDetail('name')">
+                    <span>
                         <input type="checkbox">
-                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                       
+                        <p id="name">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
                         <!-- <i class="fa fa-dot-circle-o"></i> -->
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -37,11 +36,11 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name1')">
-                    <div id="name1">
+                    <span>
                         <input type="checkbox">
-                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
+                        <p id="name1">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
                         
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -51,11 +50,11 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name2')">
-                    <div id="name2">
+                    <span>
                         <input type="checkbox">
-                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                        <p id="name2">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                         
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -65,10 +64,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name3')">
-                    <div id="name3">
+                    <span>
                         <input type="checkbox">
-                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                    </div>                        
+                        <p id="name3">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -78,10 +77,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name4')">
-                    <div id="name4">
+                    <span>
                         <input type="checkbox">
-                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
-                    </div>                        
+                        <p id="name4">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -91,10 +90,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name5')">
-                    <div id="name5">
+                    <span>
                         <input type="checkbox">
-                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
-                    </div>                        
+                        <p id="name5">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -104,10 +103,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name6')">
-                    <div id="name6">
+                    <span>
                         <input type="checkbox">
-                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                    </div>                        
+                        <p id="name6">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -117,10 +116,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name7')">
-                    <div id="name7">
+                    <span>
                         <input type="checkbox">
-                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
-                    </div>                        
+                        <p id="name7">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -130,11 +129,11 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name8')">
-                    <div id="name8">
+                    <span>
                         <input type="checkbox">
-                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                        <p id="name8">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                         
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -144,10 +143,10 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name9')">
-                    <div id="name9">
+                    <span>
                         <input type="checkbox">
-                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                    </div>                        
+                        <p id="name9">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -157,11 +156,11 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name10')">
-                    <div id="name10">
+                    <span>
                         <input type="checkbox">
-                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
+                        <p id="name10">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
                         
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -171,11 +170,11 @@
                     </div>
                 </span>
                 <span class="option1" onclick="showDetail('name11')">
-                    <div id="name11">
+                    <span>
                         <input type="checkbox">
-                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                        <p id="name11">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                         
-                    </div>                        
+                    </span>                        
                     <div class="dropup">
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
@@ -208,17 +207,16 @@
                     <form class="body">
                         <div class="title">
                             <span class="list1">Danh sách</span>
-                            <button class="btn">
+                            <button class="btn" type="button" onclick="createBtn()">
                                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
                             </button>
                             <div class="mn1">
                                 <span class="option1" onclick="showDetail('name')">
-                                    <div id="name">
+                                    <span>
                                         <input type="checkbox">
-                                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                                       
+                                        <p id="name">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
                                         <!-- <i class="fa fa-dot-circle-o"></i> -->
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -228,11 +226,11 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name1')">
-                                    <div id="name1">
+                                    <span>
                                         <input type="checkbox">
-                                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
+                                        <p id="name1">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
                                         
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -242,11 +240,11 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name2')">
-                                    <div id="name2">
+                                    <span>
                                         <input type="checkbox">
-                                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                                        <p id="name2">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                                         
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -256,10 +254,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name3')">
-                                    <div id="name3">
+                                    <span>
                                         <input type="checkbox">
-                                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                                    </div>                        
+                                        <p id="name3">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -269,10 +267,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name4')">
-                                    <div id="name4">
+                                    <span>
                                         <input type="checkbox">
-                                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
-                                    </div>                        
+                                        <p id="name4">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -282,10 +280,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name5')">
-                                    <div id="name5">
+                                    <span>
                                         <input type="checkbox">
-                                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
-                                    </div>                        
+                                        <p id="name5">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -295,10 +293,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name6')">
-                                    <div id="name6">
+                                    <span>
                                         <input type="checkbox">
-                                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                                    </div>                        
+                                        <p id="name6">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -308,10 +306,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name7')">
-                                    <div id="name7">
+                                    <span>
                                         <input type="checkbox">
-                                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
-                                    </div>                        
+                                        <p id="name7">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -321,11 +319,11 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name8')">
-                                    <div id="name8">
+                                    <span>
                                         <input type="checkbox">
-                                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                                        <p id="name8">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                                         
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -335,10 +333,10 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name9')">
-                                    <div id="name9">
+                                    <span>
                                         <input type="checkbox">
-                                        Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy
-                                    </div>                        
+                                        <p id="name9">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -348,11 +346,11 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name10')">
-                                    <div id="name10">
+                                    <span>
                                         <input type="checkbox">
-                                        Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ
+                                        <p id="name10">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
                                         
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -362,11 +360,11 @@
                                     </div>
                                 </span>
                                 <span class="option1" onclick="showDetail('name11')">
-                                    <div id="name11">
+                                    <span>
                                         <input type="checkbox">
-                                        Viết tài liệu mô tả phiên bản nâng cấp concept LMS School
+                                        <p id="name11">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
                                         
-                                    </div>                        
+                                    </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
@@ -447,6 +445,40 @@
                                     <nobr>
                                         <button onclick="saveEdit()" type="button">
                                             <strong>Lưu</strong>
+                                        </button>
+                                        <button>
+                                            <strong>Đóng</strong>
+                                        </button>
+                                    </nobr>    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+                <form id="detail3">
+                    <div class="detail2">
+                        <ul>
+                            <p>Chi tiết công việc</p>
+
+                            <li>
+                                Tên công việc : 
+                                <textarea id="name-add" cols="37" rows="5"></textarea>
+                            </li>
+                                    
+                            <li>
+                                Thời gian : 
+                                <input type="text" class="input">
+                            </li>
+                            <li>
+                                Địa điểm :
+                                <input type="text" class="input">
+                            </li>
+                            <li>
+                                <div class="editbtn">
+                                    <nobr>
+                                        <button onclick="addBtn()" type="button">
+                                            <strong>Thêm</strong>
                                         </button>
                                         <button>
                                             <strong>Đóng</strong>
