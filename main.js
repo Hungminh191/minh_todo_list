@@ -2,7 +2,8 @@ var idselected = null;
 
 var task = [
   {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
-  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"}
+  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"}
 ];
 
 document.getElementById("name").innerHTML = task[0]['name'];
@@ -12,6 +13,10 @@ document.getElementById("address").innerHTML = task[0]['address'];
 document.getElementById("name1").innerHTML = task[1]['name'];
 document.getElementById("time1").innerHTML = task[1]['time'];
 document.getElementById("address1").innerHTML = task[1]['address'];
+
+document.getElementById("name2").innerHTML = task[2]['name'];
+document.getElementById("time2").innerHTML = task[2]['time'];
+document.getElementById("address2").innerHTML = task[2]['address'];
 
 function showDetail(name, time, address) {
   idselected = name;
@@ -136,6 +141,11 @@ function addBtn(){
 
   x.style.display = "block";
   y.style.display = "none";
+}
+
+function removeTask(id){
+  const element = document.getElementById(id);
+  element.remove();
 }
 
 
