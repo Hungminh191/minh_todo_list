@@ -1,31 +1,100 @@
-var idselected = null;
+var idname = null;
+var idtime = null;
+var idaddress = null;
+var idtask = null;
 
-var task = [
+var tasks = [
+  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
+  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
+  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
   {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
   {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
   {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"}
 ];
 
-document.getElementById("name").innerHTML = task[0]['name'];
-document.getElementById("time").innerHTML = task[0]['time'];
-document.getElementById("address").innerHTML = task[0]['address'];
+document.getElementById("name").innerHTML = tasks[0]['name'];
+document.getElementById("time").innerHTML = tasks[0]['time'];
+document.getElementById("address").innerHTML = tasks[0]['address'];
 
-document.getElementById("name1").innerHTML = task[1]['name'];
-document.getElementById("time1").innerHTML = task[1]['time'];
-document.getElementById("address1").innerHTML = task[1]['address'];
+document.getElementById("name1").innerHTML = tasks[1]['name'];
+document.getElementById("time1").innerHTML = tasks[1]['time'];
+document.getElementById("address1").innerHTML = tasks[1]['address'];
 
-document.getElementById("name2").innerHTML = task[2]['name'];
-document.getElementById("time2").innerHTML = task[2]['time'];
-document.getElementById("address2").innerHTML = task[2]['address'];
+document.getElementById("name2").innerHTML = tasks[2]['name'];
+document.getElementById("time2").innerHTML = tasks[2]['time'];
+document.getElementById("address2").innerHTML = tasks[2]['address'];
 
-function showDetail(name, time, address) {
-  idselected = name;
+document.getElementById("name3").innerHTML = tasks[3]['name'];
+document.getElementById("time3").innerHTML = tasks[3]['time'];
+document.getElementById("address3").innerHTML = tasks[3]['address'];
+
+document.getElementById("name4").innerHTML = tasks[4]['name'];
+document.getElementById("time4").innerHTML = tasks[4]['time'];
+document.getElementById("address4").innerHTML = tasks[4]['address'];
+
+document.getElementById("name5").innerHTML = tasks[5]['name'];
+document.getElementById("time5").innerHTML = tasks[5]['time'];
+document.getElementById("address5").innerHTML = tasks[5]['address'];
+
+document.getElementById("name6").innerHTML = tasks[6]['name'];
+document.getElementById("time6").innerHTML = tasks[6]['time'];
+document.getElementById("address6").innerHTML = tasks[6]['address'];
+
+document.getElementById("name7").innerHTML = tasks[7]['name'];
+document.getElementById("time7").innerHTML = tasks[7]['time'];
+document.getElementById("address7").innerHTML = tasks[7]['address'];
+
+document.getElementById("name8").innerHTML = tasks[8]['name'];
+document.getElementById("time8").innerHTML = tasks[8]['time'];
+document.getElementById("address8").innerHTML = tasks[8]['address'];
+
+document.getElementById("name9").innerHTML = tasks[9]['name'];
+document.getElementById("time9").innerHTML = tasks[9]['time'];
+document.getElementById("address9").innerHTML = tasks[9]['address'];
+
+document.getElementById("name10").innerHTML = tasks[10]['name'];
+document.getElementById("time10").innerHTML = tasks[10]['time'];
+document.getElementById("address10").innerHTML = tasks[10]['address'];
+
+document.getElementById("name11").innerHTML = tasks[11]['name'];
+document.getElementById("time11").innerHTML = tasks[11]['time'];
+document.getElementById("address11").innerHTML = tasks[11]['address'];
+
+function showDetail(name, time, address, task) {
+  console.log('12');
+  idname = name;
+  idtime = time;
+  idaddress = address;
+  idtask = task;
+
   var x = document.getElementById("ds");
   var y = document.getElementById("detail");
-  
-  x.style.display = "none";
-  y.style.display = "block";
-    
+
+  var a = document.getElementById("detail1");
+  var b = document.getElementById("detail2");
+  var c = document.getElementById("detail3");
+
+  var disx = window.getComputedStyle(x).display;
+  var disa = window.getComputedStyle(a).display;
+
+  if (disx === "block") {
+    x.style.display = "none";
+    y.style.display = "block";
+    a.style.display = "block";
+    b.style.display = "none";
+    c.style.display = "none";
+  } else if (disa === "none") {
+    a.style.display = "block";
+    b.style.display = "none";
+    c.style.display = "none";
+  }
+
   var z = document.getElementById(name);
   var text  = z.textContent || z.innerText;
 
@@ -63,6 +132,7 @@ function close1(){
 }
 
 function saveEdit(){
+  console.log('11');
   var x = document.getElementById("ds");
   var y = document.getElementById("detail");
 
@@ -70,7 +140,12 @@ function saveEdit(){
   y.style.display = "none";
   
   var z = document.getElementById("name-edit").value;
-  document.getElementById(idselected).innerHTML = z;
+  var t = document.getElementById("time-edit").value;
+  var v = document.getElementById("address-edit").value;
+  // console.log(t);
+  document.getElementById(idname).innerHTML = z;
+  document.getElementById(idtime).innerHTML = t;
+  document.getElementById(idaddress).innerHTML = v;
 }
 
 function createBtn(){
@@ -109,7 +184,7 @@ function addBtn(){
   var a1 = document.createElement('a');
   var linkText1 = document.createTextNode("Xoá");
   a1.appendChild(linkText1);
-  a1.href = "#";
+  a1.setAttribute("onclick", "removeTask(task)");
 
   var div1 = document.createElement('div');
   div1.appendChild(a);
@@ -132,7 +207,7 @@ function addBtn(){
   span.setAttribute("onclick", "showDetail(name)");
   
   var element = document.getElementById("list");
-  var child = document.getElementById("task1");
+  var child = document.getElementById("task");
   // element.appendChild(span);
   element.insertBefore(span, child);
 
@@ -143,11 +218,11 @@ function addBtn(){
   y.style.display = "none";
 }
 
-function removeTask(id){
+function removeTask(id = null){
+  if (id == null) {
+    id = idtask;
+  }
+  console.log(id);
   const element = document.getElementById(id);
   element.remove();
 }
-
-
-  
-
