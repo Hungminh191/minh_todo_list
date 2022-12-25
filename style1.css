@@ -66,9 +66,9 @@ html, body{
     display: flex;
 }
 
-/* .option1 i{
+.option1 i{
     display: none;
-} */
+}
 
 .mn {
     width: 100%;
@@ -371,3 +371,8 @@ li {
 }
 
 .close:hover {background: rgb(5, 76, 134);}
+
+#hide {
+    display: none;
+}
+
