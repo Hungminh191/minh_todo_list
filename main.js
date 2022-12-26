@@ -19,38 +19,81 @@ var tasks = [
   {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"}
 ];
 
-document.getElementById("name").innerHTML = tasks[0]['name'];
-document.getElementById("time").innerHTML = tasks[0]['time'];
-document.getElementById("address").innerHTML = tasks[0]['address'];
-
-document.getElementById("iname0").innerHTML = tasks[0]['name'];
-document.getElementById("itime0").innerHTML = tasks[0]['time'];
-document.getElementById("iaddress0").innerHTML = tasks[0]['address'];
-
-for (var i = 1; i <= tasks.length; i++) {
+for (var i = 0; i <= tasks.length; i++) {
   str_name = "name";
   str_time = "time";
   str_address = "address";
+  str_task = "itask"
 
   str_name = str_name + i; 
   str_time = str_time + i; 
   str_address = str_address + i;
-  
-  document.getElementById(str_name).innerHTML = tasks[i]['name'];
-  document.getElementById(str_time).innerHTML = tasks[i]['time'];
-  document.getElementById(str_address).innerHTML = tasks[i]['address'];
+  str_task = str_task + i;
 
-  str_name1 = "iname";
-  str_time1 = "itime";
-  str_address1 = "iaddress";
-
-  str_name1 = str_name1 + i; 
-  str_time1 = str_time1 + i; 
-  str_address1 = str_address1 + i;
+  var checkbox = document.createElement('input');
+  checkbox.type = "checkbox";
   
-  document.getElementById(str_name1).innerHTML = tasks[i]['name'];
-  document.getElementById(str_time1).innerHTML = tasks[i]['time'];
-  document.getElementById(str_address1).innerHTML = tasks[i]['address'];
+  var span2 = document.createElement('span');
+  span2.id = str_name;
+
+  var node2 = tasks[i]['name'];
+  var title2 = document.createTextNode(node2);
+  console.log(title2);
+  span2.appendChild(title2);
+
+  var para1 = document.createElement('p');
+  para1.id = str_time;
+  
+  var node1 = tasks[i]['time'];
+  var title1 = document.createTextNode(node1);
+  para1.appendChild(title1);
+
+  var para3 = document.createElement('p');
+  para3.id = str_address;
+
+  var node3 = tasks[i]['address'];
+  var title3 = document.createTextNode(node3);
+  para3.appendChild(title3);
+
+  var span1 = document.createElement('span');
+  span1.appendChild(checkbox);
+  span1.appendChild(span2);
+  span1.appendChild(para1);
+  span1.appendChild(para3);
+  span1.setAttribute("onclick", "showDetail1(" + "'" + str_name + "'" + ", " + "'" + str_time + "'" + ", " + "'" + str_address + "'" + ", " + "'" + str_task + "'" + ", " + i + ")");
+  span1.className = "option";
+
+  var a = document.createElement('a');
+  var linkText = document.createTextNode("Đóng");
+  a.appendChild(linkText);
+  a.href = "#";
+  
+  var a1 = document.createElement('a');
+  var linkText1 = document.createTextNode("Xoá");
+  a1.appendChild(linkText1);
+  a1.setAttribute("onclick", "removeTask(" + "'" + str_task + "'" + ")");
+
+  var div1 = document.createElement('div');
+  div1.appendChild(a);
+  div1.appendChild(a1);
+  div1.className = "dropup-content";
+
+  var btn = document.createElement('button');
+  btn.innerHTML = "<strong>&vellip;</strong>";
+  btn.className = "dropbtn";
+  
+  var div = document.createElement('div');
+  div.appendChild(btn);
+  div.appendChild(div1);
+  div.className = "dropup";
+
+  var span = document.createElement('span');
+  span.appendChild(span1);
+  span.appendChild(div);
+  span.className = "option1";
+  span.id = str_task;
+
+  document.getElementById("list").appendChild(span);
 }
 
 function showDetail(name, time, address, task, num) {
@@ -59,8 +102,6 @@ function showDetail(name, time, address, task, num) {
   idaddress = address;
   idtask = task;
   id = num;
-
-  console.log(id);
 
   var id_ds = document.getElementById("ds");
   var id_detail = document.getElementById("detail");
@@ -85,6 +126,19 @@ function showDetail(name, time, address, task, num) {
     id_detail3.style.display = "none";
   }
 
+  if (disa === "none") {
+    id_detail1.style.display = "block";
+    id_detail2.style.display = "none";
+    id_detail3.style.display = "none";
+  } else {
+    id_ds.style.display = "none";
+    id_detail.style.display = "block";
+
+    id_detail1.style.display = "block";
+    id_detail2.style.display = "none";
+    id_detail3.style.display = "none";
+  }
+
   var id_name = document.getElementById(name);
   var text  = id_name.textContent || id_name.innerText;
 
@@ -104,23 +158,35 @@ function showDetail(name, time, address, task, num) {
   document.getElementById("address-detail").innerHTML = textAddress;
   document.getElementById("address-edit").value = textAddress;
 
-  var str;
-  str = "dot" + num;
+  // var str;
+  // str = "dot" + num;
 
-  var id_dot = document.getElementById(str);
-  id_dot.style.display = "block";
+  // var id_dot = document.getElementById(str);
+  // id_dot.style.display = "block";
 
-  for (var i = 0; i < num; i++) {
-    var str1 = "dot" + i;
-    var id_dot1 = document.getElementById(str1);
-    id_dot1.style.display = "none"; 
-  }
+  // for (var i = 0; i < num; i++) {
+  //   var str1 = "dot" + i;
+  //   var id_dot1 = document.getElementById(str1);
+  //   id_dot1.style.display = "none"; 
+  // }
 
-  for (var i = num + 1; i <= tasks.length; i++) {
-    var str1 = "dot" + i;
-    var id_dot1 = document.getElementById(str1);
-    id_dot1.style.display = "none"; 
-  }
+  // for (var i = num + 1; i <= tasks.length; i++) {
+  //   var str1 = "dot" + i;
+  //   var id_dot1 = document.getElementById(str1);
+  //   id_dot1.style.display = "none"; 
+  // }
+}
+
+function showDetail1(){
+  var box = document.getElementById('list');
+
+  box.style.position = 'absolute';
+
+  box.style.top = '50px';
+  box.style.left = '1px';
+
+  // console.log(box.style.top); 
+  // console.log(box.style.left);
 }
 
 function editBtn(){
@@ -235,7 +301,6 @@ function addBtn(){
 }
 
 function addBtn1(){
-  
   var checkbox = document.createElement('input');
   checkbox.type = "checkbox";
   
