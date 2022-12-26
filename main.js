@@ -2,6 +2,7 @@ var idname = null;
 var idtime = null;
 var idaddress = null;
 var idtask = null;
+var id = null;
 
 var tasks = [
   {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
@@ -22,6 +23,10 @@ document.getElementById("name").innerHTML = tasks[0]['name'];
 document.getElementById("time").innerHTML = tasks[0]['time'];
 document.getElementById("address").innerHTML = tasks[0]['address'];
 
+document.getElementById("iname0").innerHTML = tasks[0]['name'];
+document.getElementById("itime0").innerHTML = tasks[0]['time'];
+document.getElementById("iaddress0").innerHTML = tasks[0]['address'];
+
 for (var i = 1; i <= tasks.length; i++) {
   str_name = "name";
   str_time = "time";
@@ -34,7 +39,18 @@ for (var i = 1; i <= tasks.length; i++) {
   document.getElementById(str_name).innerHTML = tasks[i]['name'];
   document.getElementById(str_time).innerHTML = tasks[i]['time'];
   document.getElementById(str_address).innerHTML = tasks[i]['address'];
+
+  str_name1 = "iname";
+  str_time1 = "itime";
+  str_address1 = "iaddress";
+
+  str_name1 = str_name1 + i; 
+  str_time1 = str_time1 + i; 
+  str_address1 = str_address1 + i;
   
+  document.getElementById(str_name1).innerHTML = tasks[i]['name'];
+  document.getElementById(str_time1).innerHTML = tasks[i]['time'];
+  document.getElementById(str_address1).innerHTML = tasks[i]['address'];
 }
 
 function showDetail(name, time, address, task, num) {
@@ -42,6 +58,9 @@ function showDetail(name, time, address, task, num) {
   idtime = time;
   idaddress = address;
   idtask = task;
+  id = num;
+
+  console.log(id);
 
   var id_ds = document.getElementById("ds");
   var id_detail = document.getElementById("detail");
@@ -87,7 +106,6 @@ function showDetail(name, time, address, task, num) {
 
   var str;
   str = "dot" + num;
-  console.log(str);
 
   var id_dot = document.getElementById(str);
   id_dot.style.display = "block";
@@ -98,7 +116,7 @@ function showDetail(name, time, address, task, num) {
     id_dot1.style.display = "none"; 
   }
 
-  for (var i = num + 1; i <= 12; i++) {
+  for (var i = num + 1; i <= tasks.length; i++) {
     var str1 = "dot" + i;
     var id_dot1 = document.getElementById(str1);
     id_dot1.style.display = "none"; 
@@ -131,9 +149,18 @@ function saveEdit(){
   var id_name_edit = document.getElementById("name-edit").value;
   var id_time_edit = document.getElementById("time-edit").value;
   var id_address_edit = document.getElementById("address-edit").value;
+
   document.getElementById(idname).innerHTML = id_name_edit;
   document.getElementById(idtime).innerHTML = id_time_edit;
   document.getElementById(idaddress).innerHTML = id_address_edit;
+
+  var str_name = "iname" + id;
+  var str_time = "itime" + id;
+  var str_address = "iaddress" + id;
+
+  document.getElementById(str_name).innerHTML = id_name_edit;
+  document.getElementById(str_time).innerHTML = id_time_edit;
+  document.getElementById(str_address).innerHTML = id_address_edit;
 }
 
 function createBtn(){
@@ -160,7 +187,6 @@ function addBtn(){
   var para = document.createElement('p');
   var node = document.getElementById("name-add").value;
   var title = document.createTextNode(node);
-  console.log(node);
   para.appendChild(title);
   
   var span1 = document.createElement('span');
@@ -250,7 +276,7 @@ function addBtn1(){
   var a1 = document.createElement('a');
   var linkText1 = document.createTextNode("Xoá");
   a1.appendChild(linkText1);
-  a1.setAttribute("onclick", "removeTask('task0')");
+  a1.setAttribute("onclick", "removeTask('task0', 'itask0')");
 
   var div1 = document.createElement('div');
   div1.appendChild(a);
@@ -272,9 +298,85 @@ function addBtn1(){
   span.className = "option1";
   span.id = "task0";
   
-  
   var element = document.getElementById("list");
   var child = document.getElementById("hide");
+  element.insertBefore(span, child.nextSibling);
+
+  copyTask();
+
+  var x = document.getElementById("ds");
+  var y = document.getElementById("detail");
+
+  x.style.display = "block";
+  y.style.display = "none";
+}
+
+function copyTask(){
+  
+  var checkbox = document.createElement('input');
+  checkbox.type = "checkbox";
+  
+  var span2 = document.createElement('span');
+  span2.id = "name0";
+
+  var node2 = document.getElementById("name-add").value;
+  var title2 = document.createTextNode(node2);
+  span2.appendChild(title2);
+
+  var para1 = document.createElement('p');
+  para1.id = "time0";
+  
+  var node1 = document.getElementById("time-add").value;
+  var title1 = document.createTextNode(node1);
+  para1.appendChild(title1);
+
+  var para3 = document.createElement('p');
+  para3.id = "address0";
+
+  var node3 = document.getElementById("address-add").value;
+  var title3 = document.createTextNode(node3);
+  para3.appendChild(title3);
+
+  var span1 = document.createElement('span');
+  span1.appendChild(checkbox);
+  span1.appendChild(span2);
+  span1.appendChild(para1);
+  span1.appendChild(para3);
+  span1.setAttribute("onclick", "showDetail('name0', 'time0', 'address0', 'task0')");
+  span1.className = "option";
+
+  var a = document.createElement('a');
+  var linkText = document.createTextNode("Đóng");
+  a.appendChild(linkText);
+  a.href = "#";
+  
+  var a1 = document.createElement('a');
+  var linkText1 = document.createTextNode("Xoá");
+  a1.appendChild(linkText1);
+  a1.setAttribute("onclick", "removeTask('task0', 'itask0')");
+
+  var div1 = document.createElement('div');
+  div1.appendChild(a);
+  div1.appendChild(a1);
+  div1.className = "dropup-content";
+
+  var btn = document.createElement('button');
+  btn.innerHTML = "<strong>&vellip;</strong>";
+  btn.className = "dropbtn";
+  
+  var div = document.createElement('div');
+  div.appendChild(btn);
+  div.appendChild(div1);
+  div.className = "dropup";
+
+  var span = document.createElement('span');
+  span.appendChild(span1);
+  span.appendChild(div);
+  span.className = "option1";
+  span.id = "itask0";
+  
+  var element = document.getElementById("list1");
+  var child = document.getElementById("hide1");
   element.insertBefore(span, child.nextSibling);
 
   var x = document.getElementById("ds");
@@ -284,11 +386,22 @@ function addBtn1(){
   y.style.display = "none";
 }
 
-function removeTask(id = null){
-  if (id == null) {
-    id = idtask;
+function removeTask(id1 = null, id2 = null){
+  if (id1 == null) {
+    id1 = idtask;
+    id2 = "i" + id1;
   }
-  console.log(id);
-  const element = document.getElementById(id);
+  
+  var element = document.getElementById(id1);
+  var element1 = document.getElementById(id2);
   element.remove();
+  element1.remove();
+
+  var id_ds = document.getElementById("ds");
+  var disx = window.getComputedStyle(id_ds).display;
+
+  if (disx === "none") {
+    close1();
+  } 
 }
+

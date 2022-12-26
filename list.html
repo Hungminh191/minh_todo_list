@@ -42,7 +42,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task')">Xóa</a>
+                          <a type="button" onclick="removeTask('task', 'itask')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -64,7 +64,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task1')">Xóa</a>
+                          <a type="button" onclick="removeTask('task1', 'itask1')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -86,7 +86,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task2')">Xóa</a>
+                          <a type="button" onclick="removeTask('task2', 'itask2')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -107,7 +107,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task3')">Xóa</a>
+                          <a type="button" onclick="removeTask('task3', 'itask3')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -128,7 +128,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task4')">Xóa</a>
+                          <a type="button" onclick="removeTask('task4', 'itask4')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -149,7 +149,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task5')">Xóa</a>
+                          <a type="button" onclick="removeTask('task5', 'itask5')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -170,7 +170,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task6')">Xóa</a>
+                          <a type="button" onclick="removeTask('task6', 'itask6')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -191,7 +191,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task7')">Xóa</a>
+                          <a type="button" onclick="removeTask('task7', 'itask7')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -212,7 +212,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task8')">Xóa</a>
+                          <a type="button" onclick="removeTask('task8', 'itask8')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -233,7 +233,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task9')">Xóa</a>
+                          <a type="button" onclick="removeTask('task9', 'itask9')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -254,7 +254,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task10')">Xóa</a>
+                          <a type="button" onclick="removeTask('task10', 'itask10')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -275,7 +275,7 @@
                         <button class="dropbtn"><strong>&vellip;</strong></button>
                         <div class="dropup-content">
                           <a href="#">Đóng</a>
-                          <a type="button" onclick="removeTask('task11')">Xóa</a>
+                          <a type="button" onclick="removeTask('task11', 'itask11')">Xóa</a>
                         </div>
                     </div>
                 </span>
@@ -306,172 +306,271 @@
                             <button class="btn" type="button" onclick="createBtn()">
                                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
                             </button>
-                            <div class="mn1">
-                                <span class="option1" onclick="showDetail('name', 'time', 'address', 'task', 0)">
-                                    <span>
+                            <div class="mn1" id="list1">
+                                <span id="hide1">
+
+                                </span>
+                                <span class="option1" id="itask">
+                                    <span class="option" onclick="showDetail('name', 'time', 'address', 'task', 0)">
                                         <input type="checkbox">
-                                        <p id="name">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                        <span id="iname0">
+
+                                        </span>
+                                        <p id="itime0">
+                
+                                        </p>
+                                        <p id="iaddress0">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot0"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task', 'itask')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name1', 'time1', 'address1', 'task1', 1)">
-                                    <span>
+                                <span class="option1" id="itask1">
+                                    <span class="option" onclick="showDetail('name1', 'time1', 'address1', 'task1', 1)">
                                         <input type="checkbox">
-                                        <p id="name1">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                        <span id="iname1">
+
+                                        </span>
+                                        <p id="itime1">
+                
+                                        </p>
+                                        <p id="iaddress1">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot1"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task1', 'itask1')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name2', 'time2', 'address2', 'task2', 2)">
-                                    <span>
+                                <span class="option1" id="itask2">
+                                    <span class="option" onclick="showDetail('name2', 'time2', 'address2', 'task2', 2)">
                                         <input type="checkbox">
-                                        <p id="name2">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                                        <span id="iname2">
+
+                                        </span>
+                                        <p id="itime2">
+                
+                                        </p>
+                                        <p id="iaddress2">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot2"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task2', 'itask2')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name3', 'time3', 'address3', 'task3', 3)">
-                                    <span>
+                                <span class="option1" id="itask3">
+                                    <span class="option" onclick="showDetail('name3', 'time3', 'address3', 'task3', 3)">
                                         <input type="checkbox">
-                                        <p id="name3">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                        <span id="iname3">
+
+                                        </span>
+                                        <p id="itime3">
+                
+                                        </p>
+                                        <p id="iaddress3">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot3"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task3', 'itask3')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name4', 'time4', 'address4', 'task4', 4)">
-                                    <span>
+                                <span class="option1" id="itask4">
+                                    <span class="option" onclick="showDetail('name4', 'time4', 'address4', 'task4', 4)">
                                         <input type="checkbox">
-                                        <p id="name4">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                        <span id="iname4">
+
+                                        </span>
+                                        <p id="itime4">
+                
+                                        </p>
+                                        <p id="iaddress4">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot4"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task4', 'itask4')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name5', 'time5', 'address5', 'task5', 5)">
-                                    <span>
+                                <span class="option1" id="itask5">
+                                    <span class="option" onclick="showDetail('name5', 'time5', 'address5', 'task5', 5)">
                                         <input type="checkbox">
-                                        <p id="name5">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                                        <span id="iname5">
+
+                                        </span>
+                                        <p id="itime5">
+                
+                                        </p>
+                                        <p id="iaddress5">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot5"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task5', 'itask5')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name6', 'time6', 'address6', 'task6', 6)">
-                                    <span>
+                                <span class="option1" id="itask6">
+                                    <span class="option" onclick="showDetail('name6', 'time6', 'address6', 'task6', 6)">
                                         <input type="checkbox">
-                                        <p id="name6">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                        <span id="iname6">
+
+                                        </span>
+                                        <p id="itime6">
+                
+                                        </p>
+                                        <p id="iaddress6">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot6"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task6', 'itask6')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name7', 'time7', 'address7', 'task7', 7)">
-                                    <span>
+                                <span class="option1" id="itask7">
+                                    <span class="option" onclick="showDetail('name7', 'time7', 'address7', 'task7', 7)">
                                         <input type="checkbox">
-                                        <p id="name7">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                        <span id="iname7">
+
+                                        </span>
+                                        <p id="itime7">
+                
+                                        </p>
+                                        <p id="iaddress7">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot7"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task7', 'itask7')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name8', 'time8', 'address8', 'task8', 8)">
-                                    <span>
+                                <span class="option1" id="itask8">
+                                    <span class="option" onclick="showDetail('name8', 'time8', 'address8', 'task8', 8)">
                                         <input type="checkbox">
-                                        <p id="name8">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                                        <span id="iname8">
+
+                                        </span>
+                                        <p id="itime8">
+                
+                                        </p>
+                                        <p id="iaddress8">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot8"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task8', 'itask8')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name9', 'time9', 'address9', 'task9', 9)">
-                                    <span>
+                                <span class="option1" id="itask9">
+                                    <span class="option" onclick="showDetail('name9', 'time9', 'address9', 'task9', 9)">
                                         <input type="checkbox">
-                                        <p id="name9">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</p>
+                                        <span id="iname9">
+
+                                        </span>
+                                        <p id="itime9">
+                
+                                        </p>
+                                        <p id="iaddress9">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot9"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task9', 'itask9')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name10', 'time10', 'address10', 'task10', 10)">
-                                    <span>
+                                <span class="option1" id="itask10">
+                                    <span class="option" onclick="showDetail('name10', 'time10', 'address10', 'task10', 10)">
                                         <input type="checkbox">
-                                        <p id="name10">Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ</p>
+                                        <span id="iname10">
+
+                                        </span>
+                                        <p id="itime10">
+                
+                                        </p>
+                                        <p id="iaddress10">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot10"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task10', 'itask10')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
-                                <span class="option1" onclick="showDetail('name11', 'time11', 'address11', 'task11', 11)">
-                                    <span>
+                                <span class="option1" id="itask11">
+                                    <span class="option" onclick="showDetail('name11', 'time11', 'address11', 'task11', 11)">
                                         <input type="checkbox">
-                                        <p id="name11">Viết tài liệu mô tả phiên bản nâng cấp concept LMS School</p>
+                                        <span id="iname11">
+
+                                        </span>
+                                        <p id="itime11">
+                
+                                        </p>
+                                        <p id="iaddress11">
+                
+                                        </p>
                                         <i class="fa fa-dot-circle-o" id="dot11"></i>
                                     </span>                        
                                     <div class="dropup">
                                         <button class="dropbtn"><strong>&vellip;</strong></button>
                                         <div class="dropup-content">
                                           <a href="#">Đóng</a>
-                                          <a href="#">Xóa</a>
+                                          <a type="button" onclick="removeTask('task11', 'itask11')">Xóa</a>
                                         </div>
                                     </div>
                                 </span>
