@@ -14,19 +14,21 @@
     <nav class="navbar">
          <div class="logo">Minh's To-Do List</div>
     </nav>
-    <div>
+    <div class="content">
         <form class="body" align="center" id="ds">
-            <span class="list">Danh sách</span>
-            <button class="btn" type="button" onclick="createBtn()">
-                <strong>Tạo mới <i class="fa fa-plus"></i></strong>
-            </button>
             <div class="mn" id="list">
+                <span class="title">
+                    <span class="list">Danh sách</span>
+                    <button class="btn" type="button" onclick="createBtn()">
+                        <strong>Tạo mới <i class="fa fa-plus"></i></strong>
+                    </button>
+                </span>
                 <span id="hide">
 
                 </span>
             </div>
 
-            <div class="pagination">
+            <div id="pag">
                 <a href="#">&laquo;</a>
                 <a href="#">1</a>
                 <a class="active" href="#">2</a>
@@ -37,116 +39,148 @@
                 <a href="#">&raquo;</a>
             </div>
         </form>
-    </div>
 
-    <div id="detail">
-                <form id="detail1">
-                    <div class="detail1">
-                        <ul>
-                            <span class="close" onclick="close1()">&times;</span>
-                            <p>Chi tiết công việc</p>
+        <div id="detail">
+            <table>
+                <tr>
+                    <td>
+                        <div id="showList">
+                            <span class="title1">
+                                <span class="list1">Danh sách</span>
+                                <button class="btn" type="button" onclick="createBtn()">
+                                    <strong>Tạo mới <i class="fa fa-plus"></i></strong>
+                                </button>
+                            </span>
+                            <span id="hide1">
+            
+                            </span>
+                        </div>
+                        <div id="pag">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a class="active" href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <form id="detail1">
+                                <div class="detail1">
+                                    <ul>
+                                        <span class="close" onclick="close1()">&times;</span>
+                                        <p>Chi tiết công việc</p>
 
-                            <span>Tên công việc:</span>
-                            <p id="name-detail">
-                                
-                            </p>
+                                        <span>Tên công việc:</span>
+                                        <p id="name-detail">
+                                            
+                                        </p>
 
-                            <span>Thời gian:</span>
-                            <p id="time-detail">
-                                
-                            </p>
+                                        <span>Thời gian:</span>
+                                        <p id="time-detail">
+                                                
+                                        </p>
 
-                            <span>Địa điểm:</span>
-                            <p id="address-detail">
-                                
-                            </p>
-                            <li>
-                                <div class="editbtn">
-                                    <nobr>
-                                        <button onclick="editBtn()" type="button">
-                                            <strong>Sửa</strong>
-                                        </button>
-                                        <button>
-                                            <strong>Đóng</strong>
-                                        </button>
-                                        <button onclick="removeTask()" type="button">
-                                            <strong>Xóa</strong>
-                                        </button>
-                                    </nobr>
-                                </div>    
-                            </li>
-                        </ul>
-                    </div>
-                </form>
-
-                <form id="detail2">
-                    <div class="detail2">
-                        <ul>
-                            <span onclick="close1()">&times;</span>
-                            <p>Chi tiết công việc</p>
-                            <li>
-                                Tên công việc : 
-                                <textarea id="name-edit" cols="37" rows="5">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</textarea>
-                            </li>
-                                    
-                            <li>
-                                Thời gian : 
-                                <input type="text" class="input" id="time-edit" >
-                            </li>
-                            <li>
-                                Địa điểm :
-                                <input type="text" class="input" id="address-edit">
-                            </li>
-                            <li>
-                                <div class="editbtn">
-                                    <nobr>
-                                        <button onclick="saveEdit()" type="button">
-                                            <strong>Lưu</strong>
-                                        </button>
-                                        <button>
-                                            <strong>Đóng</strong>
-                                        </button>
-                                    </nobr>    
+                                        <span>Địa điểm:</span>
+                                        <p id="address-detail">
+                                                
+                                        </p>
+                                        <div class="editbtn">
+                                            <nobr>
+                                                <button onclick="editBtn()" type="button">
+                                                    <strong>Sửa</strong>
+                                                </button>
+                                                <button>
+                                                    <strong>Đóng</strong>
+                                                </button>
+                                                <button onclick="removeTask()" type="button">
+                                                    <strong>Xóa</strong>
+                                                </button>
+                                            </nobr>
+                                        </div>    
+                    
+                                    </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                </form>
+                            </form>
 
-                <form id="detail3">
-                    <div class="detail2">
-                        <ul>
-                            <span onclick="close1()">&times;</span>
-                            <p>Chi tiết công việc</p>
-                            <li>
-                                Tên công việc : 
-                                <textarea id="name-add" cols="37" rows="5"></textarea>
-                            </li>
-                                    
-                            <li>
-                                Thời gian : 
-                                <input type="text" class="input" id="time-add">
-                            </li>
-                            <li>
-                                Địa điểm :
-                                <input type="text" class="input" id="address-add">
-                            </li>
-                            <li>
-                                <div class="editbtn">
-                                    <nobr>
-                                        <button onclick="addBtn1()" type="button">
-                                            <strong>Thêm</strong>
-                                        </button>
-                                        <button>
-                                            <strong>Đóng</strong>
-                                        </button>
-                                    </nobr>    
+                            <form id="detail2">
+                                <div class="detail2">
+                                    <ul>
+                                        <span onclick="close1()">&times;</span>
+                                        <p>Chi tiết công việc</p>
+                                        <li>
+                                            Tên công việc : 
+                                            <textarea id="name-edit" cols="37" rows="5">Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy</textarea>
+                                        </li>
+                                                
+                                        <li>
+                                            Thời gian : 
+                                            <input type="text" class="input" id="time-edit" >
+                                        </li>
+                                        <li>
+                                            Địa điểm :
+                                            <input type="text" class="input" id="address-edit">
+                                        </li>
+                                        <li>
+                                            <div class="editbtn">
+                                                <nobr>
+                                                    <button onclick="saveEdit()" type="button">
+                                                        <strong>Lưu</strong>
+                                                    </button>
+                                                    <button>
+                                                        <strong>Đóng</strong>
+                                                    </button>
+                                                </nobr>    
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                </form>              
+                            </form>
+
+                            <form id="detail3">
+                                <div class="detail2">
+                                    <ul>
+                                        <span onclick="close1()">&times;</span>
+                                        <p>Chi tiết công việc</p>
+                                        <li>
+                                            Tên công việc : 
+                                            <textarea id="name-add" cols="37" rows="5"></textarea>
+                                        </li>
+                                                
+                                        <li>
+                                            Thời gian : 
+                                            <input type="text" class="input" id="time-add">
+                                        </li>
+                                        <li>
+                                            Địa điểm :
+                                            <input type="text" class="input" id="address-add">
+                                        </li>
+                                        <li>
+                                            <div class="editbtn">
+                                                <nobr>
+                                                    <button onclick="addBtn1()" type="button">
+                                                        <strong>Thêm</strong>
+                                                    </button>
+                                                    <button>
+                                                        <strong>Đóng</strong>
+                                                    </button>
+                                                </nobr>    
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>     
+                        </div>  
+                    </td>
+                </tr>
+            </table>       
+        </div>
     </div>
 </body>
-<script src="main.js"></script>
+<script src="main.js">
+    
+</script>
 </html>

@@ -12,6 +12,10 @@ html, body{
     margin-bottom: 100px;
     font-family: "Anton", sans-serif;
 }
+
+/* .content {
+    display: flex;
+} */
    
 .nav-links a {
    color: #fff;
@@ -102,49 +106,53 @@ html, body{
     color: #FFF;
 }
 
+
+
 .body {
     font-family: "Manrope", sans-serif;
     margin-left: 100px;
 }
 
 
-.pagination {
+#pag {
     text-align: center;
     margin: 0 auto;
     width: 327px;
     display: block;
     height: 100px;
+    margin-top: 66px;
 }
 
-.pagination a {
+#pag a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-.pagination a.active {
+#pag a.active {
     background-color: #0983bb;
     color: white;
 }
 
-.pagination1 {
+#pag1 {
     text-align: left;
     margin: 0 auto;
     width: 327px;
     display: block;
     height: 100px;
     margin-left: 267px;
+    
 }
 
-.pagination1 a {
+#pag1 a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-.pagination1 a.active {
+#pag1 a.active {
     background-color: #0983bb;
     color: white;
 }
@@ -156,27 +164,32 @@ ul {
 }
 
 .title {
-    margin-left: 40px;
+    margin-right: 953px;
+}
+
+.title1 {
+    margin-right: 93px;
 }
   
 .detail1 {
     border: 1px inset #f1edee;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: rgb(10, 120, 209);
     color: rgb(223, 229, 235);
     border-radius: 8px;
     text-align: left;
     width: 474px;
     height: 503px;
-    font-size: 25px;
+    font-size: 23px;
     padding-left: 0px;
-    padding-right: 40px;
-    padding-top: -47px;
-    padding-bottom: 22px;
-    margin-left: 1265px;
-    margin-bottom: 495px;
+    padding-right: 34px;
+    padding-top: 8px;
+    padding-bottom: 28px;
+    margin-left: 259px;
+    margin-bottom: 353px;
+    font-family: "Manrope", sans-serif;
 }
 
 .detail1 input {
@@ -193,14 +206,15 @@ ul {
     border-radius: 8px;
     text-align: left;
     width: 356px;
-    height: 485px;
+    height: 526px;
     font-size: 25px;
     padding-left: 0px;
     padding-right: 40px;
     padding-top: -47px;
     padding-bottom: 22px;
-    margin-left: 182px;
-    margin-bottom: 552px;
+    margin-left: 259px;
+    margin-bottom: 353px;
+    font-family: "Manrope", sans-serif;
 }
 
 .detail2 span {
@@ -363,6 +377,14 @@ li {
     display: none;
   }
 
+  /* #showList{
+    display: none;
+  }
+
+  #detail1{
+    display: none;
+  } */
+
 .close{
     cursor: pointer;
     margin-left: 427px;
@@ -374,5 +396,10 @@ li {
 
 #hide {
     display: none;
+}
+
+#showList {
+    font-family: "Manrope", sans-serif;
+    margin-left: 124px;
 }
 

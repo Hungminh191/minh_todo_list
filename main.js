@@ -5,30 +5,41 @@ var idtask = null;
 var id = null;
 
 var tasks = [
-  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
-  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
-  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
-  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
-  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
-  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
-  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
-  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
-  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
-  {name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
-  {name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
-  {name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"}
+  {keyid: 0, name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {keyid: 1, name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {keyid: 2, name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
+  {keyid: 3, name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {keyid: 4, name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {keyid: 5, name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
+  {keyid: 6, name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {keyid: 7, name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {keyid: 8, name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"},
+  {keyid: 9, name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},
+  {keyid: 10, name: "Gửi plan báo cáo hoàn thành nâng cấp EL cho TĐ", time: "16/12/2022", address: "57HTK"},
+  {keyid: 11, name: "Viết tài liệu mô tả phiên bản nâng cấp concept LMS School", time: "19/12/2022", address: "360GP"}
 ];
 
 for (var i = 0; i <= tasks.length; i++) {
   str_name = "name";
   str_time = "time";
   str_address = "address";
-  str_task = "itask"
+  str_task = "task"
 
   str_name = str_name + i; 
   str_time = str_time + i; 
   str_address = str_address + i;
   str_task = str_task + i;
+
+  istr_name = "iname";
+  istr_time = "itime";
+  istr_address = "iaddress";
+  istr_task = "itask"
+
+  istr_name = istr_name + i; 
+  istr_time = istr_time + i; 
+  istr_address = istr_address + i;
+  istr_task = istr_task + i;
+
 
   var checkbox = document.createElement('input');
   checkbox.type = "checkbox";
@@ -71,7 +82,7 @@ for (var i = 0; i <= tasks.length; i++) {
   var a1 = document.createElement('a');
   var linkText1 = document.createTextNode("Xoá");
   a1.appendChild(linkText1);
-  a1.setAttribute("onclick", "removeTask(" + "'" + str_task + "'" + ")");
+  a1.setAttribute("onclick", "removeTask(" + "'" + str_task + "'" + ", " + "'" + istr_task + "'" + ")");
 
   var div1 = document.createElement('div');
   div1.appendChild(a);
@@ -94,6 +105,74 @@ for (var i = 0; i <= tasks.length; i++) {
   span.id = str_task;
 
   document.getElementById("list").appendChild(span);
+
+
+
+  
+  var icheckbox = document.createElement('input');
+  icheckbox.type = "checkbox";
+  
+  var ispan2 = document.createElement('span');
+  ispan2.id = istr_name;
+
+  var inode2 = tasks[i]['name'];
+  var ititle2 = document.createTextNode(inode2);
+  console.log(ititle2);
+  ispan2.appendChild(ititle2);
+
+  var ipara1 = document.createElement('p');
+  ipara1.id = istr_time;
+  
+  var inode1 = tasks[i]['time'];
+  var ititle1 = document.createTextNode(inode1);
+  ipara1.appendChild(ititle1);
+
+  var ipara3 = document.createElement('p');
+  ipara3.id = istr_address;
+
+  var inode3 = tasks[i]['address'];
+  var ititle3 = document.createTextNode(inode3);
+  ipara3.appendChild(ititle3);
+
+  var ispan1 = document.createElement('span');
+  ispan1.appendChild(icheckbox);
+  ispan1.appendChild(ispan2);
+  ispan1.appendChild(ipara1);
+  ispan1.appendChild(ipara3);
+  ispan1.setAttribute("onclick", "showDetail1(" + "'" + istr_name + "'" + ", " + "'" + istr_time + "'" + ", " + "'" + istr_address + "'" + ", " + "'" + istr_task + "'" + ", " + i + ")");
+  ispan1.className = "option";
+
+  var ia = document.createElement('a');
+  var ilinkText = document.createTextNode("Đóng");
+  ia.appendChild(ilinkText);
+  ia.href = "#";
+  
+  var ia1 = document.createElement('a');
+  var ilinkText1 = document.createTextNode("Xoá");
+  ia1.appendChild(ilinkText1);
+  ia1.setAttribute("onclick", "removeTask(" + "'" + str_task + "'" + ", " + "'" + istr_task + "'" + ")");
+
+  var idiv1 = document.createElement('div');
+  idiv1.appendChild(ia);
+  idiv1.appendChild(ia1);
+  idiv1.className = "dropup-content";
+
+  var ibtn = document.createElement('button');
+  ibtn.innerHTML = "<strong>&vellip;</strong>";
+  ibtn.className = "dropbtn";
+  
+  var idiv = document.createElement('div');
+  idiv.appendChild(ibtn);
+  idiv.appendChild(idiv1);
+  idiv.className = "dropup";
+
+  var ispan = document.createElement('span');
+  ispan.appendChild(ispan1);
+  ispan.appendChild(idiv);
+  ispan.className = "option1";
+  ispan.id = istr_task;
+
+  document.getElementById("showList").appendChild(ispan);
 }
 
 function showDetail(name, time, address, task, num) {
@@ -177,32 +256,86 @@ function showDetail(name, time, address, task, num) {
   // }
 }
 
-function showDetail1(){
-  var box = document.getElementById('list');
+function showDetail1(name, time, address, task, num){
+  idname = name;
+  idtime = time;
+  idaddress = address;
+  idtask = task;
+  id = num;
 
-  box.style.position = 'absolute';
+  var ds = document.getElementById("ds");
+  var detail = document.getElementById("detail");
 
-  box.style.top = '50px';
-  box.style.left = '1px';
+  var detail1 = document.getElementById("detail1");
+  var detail2 = document.getElementById("detail2");
+  var detail3 = document.getElementById("detail3");
 
-  // console.log(box.style.top); 
-  // console.log(box.style.left);
+  var dis_ds = window.getComputedStyle(ds).display;
+  var dis_detail1 = window.getComputedStyle(detail1).display;
+  
+  if (dis_ds === "block") {
+    ds.style.display = "none";
+    detail.style.display = "block";
+
+    detail1.style.display = "block";
+    detail2.style.display = "none";
+    detail3.style.display = "none";
+  } else if (dis_detail1 === "none") {
+    detail1.style.display = "block";
+    detail2.style.display = "none";
+    detail3.style.display = "none";
+  }
+
+  if (dis_detail1 === "none") {
+    detail1.style.display = "block";
+    detail2.style.display = "none";
+    detail3.style.display = "none";
+  } else {
+    ds.style.display = "none";
+    detail.style.display = "block";
+
+    detail1.style.display = "block";
+    detail2.style.display = "none";
+    detail3.style.display = "none";
+  }
+
+  var id_name = document.getElementById(name);
+  var text  = id_name.textContent || id_name.innerText;
+
+  document.getElementById("name-detail").innerHTML = text;
+  document.getElementById("name-edit").innerHTML = text;
+
+  var id_time = document.getElementById(time);
+  var textTime = id_time.textContent || id_time.innerText;
+
+  document.getElementById("time-detail").innerHTML = textTime;
+  document.getElementById("time-edit").value = textTime;
+
+
+  var id_address = document.getElementById(address);
+  var textAddress = id_address.textContent || id_address.innerText;
+
+  document.getElementById("address-detail").innerHTML = textAddress;
+  document.getElementById("address-edit").value = textAddress;
+
+  // var id_showList = document.getElementById("showList");
+  // id_showList.appendChild(id_ds);
 }
 
 function editBtn(){
   var id_detail2 = document.getElementById("detail2");
-  id_detail2.style.display = "block";
-
   var id_detail1 = document.getElementById("detail1");
+
+  id_detail2.style.display = "block";
   id_detail1.style.display = "none";
 }
 
 function close1(){
-  var id_ds = document.getElementById("ds");
-  var id_detail = document.getElementById("detail");
+  var ds = document.getElementById("ds");
+  var detail = document.getElementById("detail");
   
-  id_ds.style.display = "block";
-  id_detail.style.display = "none";
+  ds.style.display = "block";
+  detail.style.display = "none";
 }
 
 function saveEdit(){
@@ -234,11 +367,13 @@ function createBtn(){
   var id_detail = document.getElementById("detail");
   var id_detail3 = document.getElementById("detail3");
   var id_detail1 = document.getElementById("detail1");
+  var id_detail2 = document.getElementById("detail2");
 
   id_ds.style.display = "none";
   id_detail.style.display = "block";
   id_detail3.style.display = "block";
   id_detail1.style.display = "none";
+  id_detail2.style.display = "none";
 
   document.getElementById("name-add").value = "";
   document.getElementById("time-add").value = "";
@@ -440,7 +575,7 @@ function copyTask(){
   span.className = "option1";
   span.id = "itask0";
   
-  var element = document.getElementById("list1");
+  var element = document.getElementById("showList");
   var child = document.getElementById("hide1");
   element.insertBefore(span, child.nextSibling);
 
@@ -469,4 +604,3 @@ function removeTask(id1 = null, id2 = null){
     close1();
   } 
 }
-
