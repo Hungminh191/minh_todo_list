@@ -13,10 +13,6 @@ html, body{
     font-family: "Anton", sans-serif;
 }
 
-/* .content {
-    display: flex;
-} */
-   
 .nav-links a {
    color: #fff;
 }
@@ -172,6 +168,7 @@ ul {
 }
   
 .detail1 {
+    /* position: absolute; */
     border: 1px inset #f1edee;
     display: flex;
     align-items: center;
@@ -401,5 +398,19 @@ li {
 #showList {
     font-family: "Manrope", sans-serif;
     margin-left: 124px;
+}
+
+.notification{
+    border: 1px solid rgb(10, 120, 209);
+    width: 200px;
+    background-color: rgb(10, 120, 209);
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    top: 12%;
+    left: 88%;
+    font-family: "Manrope", sans-serif;
+    color: #FFF;
+    display: none;
 }
 
