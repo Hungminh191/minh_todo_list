@@ -16,13 +16,14 @@
     </nav>
     <div class="content">
         <form class="body" align="center" id="ds">
+            <span class="title" id="title">
+                <span class="list">Danh sách</span>
+                <button class="btn" type="button" onclick="createBtn()">
+                    <strong>Tạo mới <i class="fa fa-plus"></i></strong>
+                </button>
+            </span>
             <div class="mn" id="list">
-                <span class="title">
-                    <span class="list">Danh sách</span>
-                    <button class="btn" type="button" onclick="createBtn()">
-                        <strong>Tạo mới <i class="fa fa-plus"></i></strong>
-                    </button>
-                </span>
+                
                 <span id="hide">
 
                 </span>
@@ -30,12 +31,12 @@
 
             <div id="pag">
                 <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a class="active" href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
+                <a id="page1" onclick="showTasks(1)">1</a>
+                <a id="page2" onclick="showTasks(2)">2</a>
+                <a id="page3" onclick="showTasks(3)">3</a>
+                <a id="page4" onclick="showTasks(4)">4</a>
+                <!-- <a href="#">5</a>
+                <a href="#">6</a> -->
                 <a href="#">&raquo;</a>
             </div>
         </form>
@@ -48,25 +49,26 @@
             <table>
                 <tr>
                     <td>
+                        <span class="title1">
+                            <span class="list1">Danh sách</span>
+                            <button class="btn" type="button" onclick="createBtn()">
+                                <strong>Tạo mới <i class="fa fa-plus"></i></strong>
+                            </button>
+                        </span>
                         <div id="showList">
-                            <span class="title1">
-                                <span class="list1">Danh sách</span>
-                                <button class="btn" type="button" onclick="createBtn()">
-                                    <strong>Tạo mới <i class="fa fa-plus"></i></strong>
-                                </button>
-                            </span>
+                            
                             <span id="hide1">
             
                             </span>
                         </div>
                         <div id="pag">
                             <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a class="active" href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
+                            <a id="ipage1" onclick="showTasksSide(1)">1</a>
+                            <a id="ipage2" onclick="showTasksSide(2)">2</a>
+                            <a id="ipage3" onclick="showTasksSide(3)">3</a>
+                            <a id="ipage4" onclick="showTasksSide(4)">4</a>
+                            <!-- <a href="#">5</a>
+                            <a href="#">6</a> -->
                             <a href="#">&raquo;</a>
                         </div>
                     </td>

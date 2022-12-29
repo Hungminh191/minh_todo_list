@@ -160,11 +160,11 @@ ul {
 }
 
 .title {
-    margin-right: 953px;
+    margin-right: 3px;
 }
 
 .title1 {
-    margin-right: 93px;
+    margin-left: 124px;
 }
   
 .detail1 {
@@ -185,7 +185,7 @@ ul {
     padding-top: 8px;
     padding-bottom: 28px;
     margin-left: 259px;
-    margin-bottom: 353px;
+    margin-bottom: 17px;
     font-family: "Manrope", sans-serif;
 }
 
@@ -372,6 +372,7 @@ li {
 
   #detail{
     display: none;
+    font-family: "Manrope", sans-serif;
   }
 
   /* #showList{
