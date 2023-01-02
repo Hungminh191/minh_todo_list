@@ -24,12 +24,13 @@ html, body{
 .list {
     font-size: 36px;
     font-style: serif;
+    margin-right: 25px;
 }
 
 .list1 {
     font-size: 36px;
     font-style: serif;
-    margin-left: 1px;
+    margin-right: 25px;
 }
 
 .option p{
@@ -93,7 +94,7 @@ html, body{
     border: none;
     box-shadow: -2px 2px #b3b3b3, -2px 2px #626262, -1px 1px #525252;
     margin-bottom: 30px;
-    margin-left: 308px;
+    margin-left: 247px;
     border-radius: 20px;
     outline: none;
     cursor: pointer;
@@ -102,13 +103,12 @@ html, body{
     color: #FFF;
 }
 
-
-
 .body {
+    display: none;
     font-family: "Manrope", sans-serif;
     margin-left: 100px;
+    /* border: 1px solid #ccc; */
 }
-
 
 #pag {
     text-align: center;
@@ -151,16 +151,16 @@ html, body{
 
 ul {
     list-style:none;
-    /* margin-left: 0px; */
-    
 }
 
 .title {
-    margin-right: 0px;
+    margin-left: 592px;
+    display: flex;
 }
 
 .title1 {
-    margin-left: 124px;
+    margin-left: 225px;
+    display: flex;
 }
   
 .detail1 {
@@ -380,11 +380,12 @@ li {
 
 .close:hover {background: rgb(5, 76, 134);}
 
-#hide {
-    display: none;
+#showList {
+    font-family: "Manrope", sans-serif;
+    margin-left: 124px;
 }
 
-#showList {
+#showList1 {
     font-family: "Manrope", sans-serif;
     margin-left: 124px;
 }
@@ -405,5 +406,36 @@ li {
 
 #list0 {
     font-family: "Manrope", sans-serif;
-    margin-left: 585px;
+    margin-left: 490px;
+}
+
+#content {
+    font-family: "Manrope", sans-serif;
+}
+
+.tabs {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    height: 46px;
+}
+
+.tab {
+    /* border: 1px solid #ccc; */
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.mark-tab {
+    background-color: rgb(10, 120, 209);
+    color: white;
 }

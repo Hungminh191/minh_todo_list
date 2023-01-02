@@ -14,20 +14,21 @@
     <nav class="navbar">
          <div class="logo">Minh's To-Do List</div>
     </nav>
-    <div class="content">
+    <div id="content">
+        <span class="title" id="title">
+            <span class="list">Danh sách</span>
+            <div class="tabs">
+                <button class="tab" id="tab1" onclick="openTasks('ds', 'page1', 1)">Đang làm</button>
+                <button class="tab" id="tab2" onclick="openTasks('ds0', 'idpage1', 2)">Đã hoàn thành</button>
+            </div>
+            <button class="btn" type="button" onclick="createBtn()">
+                <strong>Tạo mới <i class="fa fa-plus"></i></strong>
+            </button>
+        </span>
         <form class="body" align="center" id="ds">
-            <span class="title" id="title">
-                <span class="list">Danh sách</span>
-                <button>Đang làm</button>
-                <button>Đã hoàn thành</button>
-                <button class="btn" type="button" onclick="createBtn()">
-                    <strong>Tạo mới <i class="fa fa-plus"></i></strong>
-                </button>
-            </span>
+            
             <div class="mn" id="list">
-                <span id="hide">
-
-                </span>
+            
             </div>
 
             <div id="pag">
@@ -41,55 +42,71 @@
             </div>
         </form>
 
-        <form class="body0" align="center" id="ds0">
+        <form class="body" align="center" id="ds0">
             <div class="mn0" id="list0">
-                <span id="hide0">
-
-                </span>
+                
             </div>
 
             <div id="pag">
-                <a id="page0">&laquo;</a>
-                <a id="page1" onclick="showTasks(document.getElementById('page1').textContent, this.id)">1</a>
-                <a id="page2" onclick="showTasks(document.getElementById('page2').textContent, this.id)">2</a>
-                <a id="page3" onclick="showTasks(document.getElementById('page3').textContent, this.id)">3</a>
-                <a id="page4" onclick="showTasks(document.getElementById('page4').textContent, this.id)">4</a>
-                <a id="page5" onclick="showTasks(document.getElementById('page5').textContent, this.id)">5</a>
-                <a id="page6">&raquo;</a>
+                <a id="idpage0">&laquo;</a>
+                <a id="idpage1" onclick="showTasksCompleted(document.getElementById('idpage1').textContent, this.id)">1</a>
+                <a id="idpage2" onclick="showTasksCompleted(document.getElementById('idpage2').textContent, this.id)">2</a>
+                <a id="idpage3" onclick="showTasksCompleted(document.getElementById('idpage3').textContent, this.id)">3</a>
+                <a id="idpage4" onclick="showTasksCompleted(document.getElementById('idpage4').textContent, this.id)">4</a>
+                <a id="idpage5" onclick="showTasksCompleted(document.getElementById('idpage5').textContent, this.id)">5</a>
+                <a id="idpage6">&raquo;</a>
             </div>
         </form>
 
         <div class="notification" id="notification">
             <p id="txt"></p>
         </div>
+    </div>
 
-        <div id="detail">
+    <div id="detail">
+        <div>
             <table>
                 <tr>
                     <td>
                         <span class="title1">
                             <span class="list1">Danh sách</span>
-                            <button>Đang làm</button>
-                            <button>Đã hoàn thành</button>
+                            <div class="tabs">
+                                <button class="tab" id="tab3" onclick="openTasks('ds1', 'ipage1', 3)">Đang làm</button>
+                                <button class="tab" id="tab4" onclick="openTasks('ds2', 'pageid1', 4)">Đã hoàn thành</button>
+                            </div>
                             <button class="btn" type="button" onclick="createBtn()">
                                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
                             </button>
                         </span>
-                        <div id="showList">
+                        <form class="body" id="ds1">
+                            <div id="showList">
                             
-                            <span id="hide1">
-            
-                            </span>
-                        </div>
-                        <div id="pag">
-                            <a id="ipage0">&laquo;</a>
-                            <a id="ipage1" onclick="showTasksSide(document.getElementById('ipage1').textContent, this.id)">1</a>
-                            <a id="ipage2" onclick="showTasksSide(document.getElementById('ipage2').textContent, this.id)">2</a>
-                            <a id="ipage3" onclick="showTasksSide(document.getElementById('ipage3').textContent, this.id)">3</a>
-                            <a id="ipage4" onclick="showTasksSide(document.getElementById('ipage4').textContent, this.id)">4</a>
-                            <a id="ipage5" onclick="showTasksSide(document.getElementById('ipage5').textContent, this.id)">5</a>
-                            <a id="ipage6">&raquo;</a>
-                        </div>
+                            </div>
+                            <div id="pag">
+                                <a id="ipage0">&laquo;</a>
+                                <a id="ipage1" onclick="showTasksSide(document.getElementById('ipage1').textContent, this.id)">1</a>
+                                <a id="ipage2" onclick="showTasksSide(document.getElementById('ipage2').textContent, this.id)">2</a>
+                                <a id="ipage3" onclick="showTasksSide(document.getElementById('ipage3').textContent, this.id)">3</a>
+                                <a id="ipage4" onclick="showTasksSide(document.getElementById('ipage4').textContent, this.id)">4</a>
+                                <a id="ipage5" onclick="showTasksSide(document.getElementById('ipage5').textContent, this.id)">5</a>
+                                <a id="ipage6">&raquo;</a>
+                            </div>
+                        </form>
+                        
+                        <form class="body" id="ds2">
+                            <div id="showList1">
+                            
+                            </div>
+                            <div id="pag">
+                                <a id="pageid0">&laquo;</a>
+                                <a id="pageid1" onclick="showTasksCompletedSide(document.getElementById('pageid1').textContent, this.id)">1</a>
+                                <a id="pageid2" onclick="showTasksCompletedSide(document.getElementById('pageid2').textContent, this.id)">2</a>
+                                <a id="pageid3" onclick="showTasksCompletedSide(document.getElementById('pageid3').textContent, this.id)">3</a>
+                                <a id="pageid4" onclick="showTasksCompletedSide(document.getElementById('pageid4').textContent, this.id)">4</a>
+                                <a id="pageid5" onclick="showTasksCompletedSide(document.getElementById('pageid5').textContent, this.id)">5</a>
+                                <a id="pageid6">&raquo;</a>
+                            </div>
+                        </form>
                     </td>
                     <td>
                         <div>
