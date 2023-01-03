@@ -45,6 +45,11 @@ var tasksCompleted = [
   {keyid: 6, name: "Nghiên cứu đề thi, học hành tại C2 Giảng Võ, Nguyễn Tất Thành, Cấu Giấy", time: "13/12/2022", address: "97 NCT"},  
 ];
 
+function showHideElement(id_el, state){
+  var el_id = document.getElementById(id_el);
+  el_id.style.display = state;
+}
+
 function showTasks(page, id_page){
   idpage = page;
   document.getElementById("list").innerHTML = "";
@@ -134,40 +139,33 @@ function showDetail(name, time, address, task, num){
   idtask = task;
   id = num;
 
-  var content = document.getElementById("content");
-  var detail = document.getElementById("detail");
-
-  var detail1 = document.getElementById("detail1");
-  var detail2 = document.getElementById("detail2");
-  var detail3 = document.getElementById("detail3");
-
   var dis_content = window.getComputedStyle(content).display;
   var dis_detail1 = window.getComputedStyle(detail1).display;
   
   if (dis_content === "block") {
-    content.style.display = "none";
-    detail.style.display = "block";
+    showHideElement("content", "none");
+    showHideElement("detail", "block");
 
-    detail1.style.display = "block";
-    detail2.style.display = "none";
-    detail3.style.display = "none";
+    showHideElement("detail1", "block");
+    showHideElement("detail2", "none");
+    showHideElement("detail3", "none");
   } else if (dis_detail1 === "none") {
-    detail1.style.display = "block";
-    detail2.style.display = "none";
-    detail3.style.display = "none";
+    showHideElement("detail1", "block");
+    showHideElement("detail2", "none");
+    showHideElement("detail3", "none");
   }
 
   if (dis_detail1 === "none") {
-    detail1.style.display = "block";
-    detail2.style.display = "none";
-    detail3.style.display = "none";
+    showHideElement("detail1", "block");
+    showHideElement("detail2", "none");
+    showHideElement("detail3", "none");
   } else {
-    content.style.display = "none";
-    detail.style.display = "block";
+    showHideElement("content", "none");
+    showHideElement("detail", "block");
 
-    detail1.style.display = "block";
-    detail2.style.display = "none";
-    detail3.style.display = "none";
+    showHideElement("detail1", "block");
+    showHideElement("detail2", "none");
+    showHideElement("detail3", "none");
   }
 
   var id_name = document.getElementById(name);
@@ -190,11 +188,13 @@ function showDetail(name, time, address, task, num){
   document.getElementById("address-edit").value = textAddress;
 
   var ipage = "ipage" + idpage;
-  showTasksSide(idpage, ipage);
-  showTasksCompletedSide(idpage, ipage);
-  openTasks("ds1", 'ipage1', 3);
-}
 
+  showTasksSide(idpage, ipage);
+
+  showTasksCompletedSide(idpage, ipage);
+
+  openTasks("ds1", ipage, 3);
+}
 
 function showTasksSide(page, id_page){
   idpage = page;
@@ -272,11 +272,11 @@ function showTasksSide(page, id_page){
 
       document.getElementById("showList").appendChild(span);
     }
-
-    markPage(id_page);
-
-    pageNumber();
   }
+
+  markPage(id_page);
+
+  pageNumber();
 }
 
 function showTasksCompleted(page, id_page){
@@ -331,7 +331,7 @@ function showTasksCompleted(page, id_page){
       var a1 = document.createElement('a');
       var linkText1 = document.createTextNode("Xoá");
       a1.appendChild(linkText1);
-      a1.setAttribute("onclick", "removeTask(" + i + ")");
+      a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
       var div1 = document.createElement('div');
       div1.appendChild(a);
@@ -414,7 +414,7 @@ function showTasksCompletedSide(page, id_page){
       var a1 = document.createElement('a');
       var linkText1 = document.createTextNode("Xoá");
       a1.appendChild(linkText1);
-      a1.setAttribute("onclick", "removeTask(" + i + ")");
+      a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
       var div1 = document.createElement('div');
       div1.appendChild(a);
@@ -446,30 +446,21 @@ function showTasksCompletedSide(page, id_page){
 }
 
 function editBtn(){
-  var id_detail2 = document.getElementById("detail2");
-  var id_detail1 = document.getElementById("detail1");
-
-  id_detail2.style.display = "block";
-  id_detail1.style.display = "none";
-
+  showHideElement("detail2", "block");
+  showHideElement("detail1", "none");
 }
 
 function close1(){
-  var ds = document.getElementById("ds");
-  var detail = document.getElementById("detail");
-  
-  ds.style.display = "block";
-  detail.style.display = "none";
+  showHideElement("content", "block");
+  showHideElement("detail", "none");
 
-  showTasks(idpage, "page" + idpage)
+  showTasks(idpage, "page" + idpage);
+  openTasks("ds", 'page1', 1);
 }
 
 function saveEdit(){
-  var id_content = document.getElementById("content");
-  var id_detail = document.getElementById("detail");
-
-  id_content.style.display = "block";
-  id_detail.style.display = "none";
+  showHideElement("content", "block");
+  showHideElement("detail", "none");
   
   var id_name_edit = document.getElementById("name-edit").value;
   var id_time_edit = document.getElementById("time-edit").value;
@@ -496,17 +487,11 @@ function saveEdit(){
 }
 
 function createBtn(){
-  var id_ds = document.getElementById("ds");
-  var id_detail = document.getElementById("detail");
-  var id_detail3 = document.getElementById("detail3");
-  var id_detail1 = document.getElementById("detail1");
-  var id_detail2 = document.getElementById("detail2");
-
-  id_ds.style.display = "none";
-  id_detail.style.display = "block";
-  id_detail3.style.display = "block";
-  id_detail1.style.display = "none";
-  id_detail2.style.display = "none";
+  showHideElement("ds", "none");
+  showHideElement("detail", "block");
+  showHideElement("detail3", "block");
+  showHideElement("detail1", "none");
+  showHideElement("detail2", "none");
 
   document.getElementById("name-add").value = "";
   document.getElementById("time-add").value = "";
@@ -524,11 +509,8 @@ function addBtn1(){
 
   showTasks(1, "page1");
 
-  var x = document.getElementById("ds");
-  var y = document.getElementById("detail");
-
-  x.style.display = "block";
-  y.style.display = "none";
+  showHideElement("ds", "block");
+  showHideElement("detail", "none");
 
   document.getElementById("txt").innerHTML = "Thêm thành công";
 
@@ -568,6 +550,36 @@ function removeTask(index = null){
   setTimeout(function(){
     noti.style.display = "none";
   }, 1500);
+}
+
+function removeTaskCompleted(index = null){
+  if (index == null) {
+    index = id;
+  }
+
+  for (var i = 0; i < tasksCompleted.length; i++) {
+    if (i === index) {
+      tasksCompleted.splice(i, 1);
+    }
+  }
+
+  var id_ds = document.getElementById("ds0");
+  var disx = window.getComputedStyle(id_ds).display;
+
+  if (disx === "none") {
+    close1();
+  } 
+
+  showTasksCompleted(idpage, "idpage" + idpage);
+
+  // document.getElementById("txt").innerHTML = "Xóa thành công";
+
+  // var noti = document.getElementById("notification");
+  // noti.style.display = "block";
+
+  // setTimeout(function(){
+  //   noti.style.display = "none";
+  // }, 1500);
 }
 
 function markPage(page){
@@ -655,6 +667,7 @@ function openTasks(ds, page, number){
   var mark = document.getElementById(idmark);
   mark.classList.add("mark-tab");
 
+  console.log(page);
   markPage(page);
 }
 
