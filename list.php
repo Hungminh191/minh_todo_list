@@ -1,6 +1,3 @@
-<?php
-die('xxxff');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,22 +15,32 @@ die('xxxff');
          <div class="logo">Minh's To-Do List</div>
     </nav>
 
-    <?php 
-        phpinfo();
-        <!-- $con = mysqli_connect('localhost', 'root', '', 'todo_list');
+    <h2 id="result"></h2>
 
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
+    <?php 
+        $servername = "localhost:3308";
+        $username = "lcms_admin";
+        $password = "Abc123456@#";
+        $database = "vnpt_tvs";
+
+        $conn = mysqli_connect($servername, $username, $password, $database);
+        if (!$conn){
+            echo ("Kết nối ko thành công!");
+        } else {
+            echo ("Kết nối thành công");
         }
 
-        $sql = "SELECT * FROM todo_list";
+        $sql = "SELECT name FROM todo_list";
 
-        $result = mysqli_query($con, $sql);
+        $result = mysqli_query($conn, $sql);
 
-        while ($row=mysqli_fetch_assoc($result)) {
-            $data[] = $row;
-        } -->
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row; 
+        }
 
+        foreach ($data as $value) {
+            echo ($value['name']);
+        }
     ?>
 
     <div id="content">
@@ -48,9 +55,8 @@ die('xxxff');
             </button>
         </span>
         <form class="body" align="center" id="ds">
-            
             <div class="mn" id="list">
-                <?php echo row['name']; ?>
+
             </div>
 
             <div id="pag">
@@ -245,6 +251,8 @@ die('xxxff');
     </div>
 </body>
 <script src="main.js">
-    
+    const data = "<?php echo $x ?>";
+    const result = document.getElementById("result");
+    result.innerHTML = data;
 </script>
 </html>

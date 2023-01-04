@@ -68,7 +68,7 @@ function showTasks(page, id_page){
     if (tasks[i] != null) {
       var span2 = document.createElement('span');
       span2.id = str_name;
-
+      
       var node2 = tasks[i]['name'];
       var title2 = document.createTextNode(node2);
       span2.appendChild(title2);
@@ -188,12 +188,17 @@ function showDetail(name, time, address, task, num){
   document.getElementById("address-edit").value = textAddress;
 
   var ipage = "ipage" + idpage;
+  var pageid = "pageid" + idpage;
 
   showTasksSide(idpage, ipage);
 
   showTasksCompletedSide(idpage, ipage);
 
-  openTasks("ds1", ipage, 3);
+  if (name.charAt(0) != "i") {
+    openTasks("ds1", ipage, 3);
+  } else {
+    openTasks("ds2", pageid, 4);
+  } 
 }
 
 function showTasksSide(page, id_page){
@@ -322,11 +327,6 @@ function showTasksCompleted(page, id_page){
       span1.appendChild(para3);
       span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
       span1.className = "option";
-
-      var a = document.createElement('a');
-      var linkText = document.createTextNode("Hoàn Thành");
-      a.appendChild(linkText);
-      a.href = "#";
       
       var a1 = document.createElement('a');
       var linkText1 = document.createTextNode("Xoá");
@@ -334,7 +334,6 @@ function showTasksCompleted(page, id_page){
       a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
       var div1 = document.createElement('div');
-      div1.appendChild(a);
       div1.appendChild(a1);
       div1.className = "dropup-content";
 
@@ -405,11 +404,6 @@ function showTasksCompletedSide(page, id_page){
       span1.appendChild(para3);
       span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
       span1.className = "option";
-
-      var a = document.createElement('a');
-      var linkText = document.createTextNode("Hoàn Thành");
-      a.appendChild(linkText);
-      a.href = "#";
       
       var a1 = document.createElement('a');
       var linkText1 = document.createTextNode("Xoá");
@@ -417,7 +411,6 @@ function showTasksCompletedSide(page, id_page){
       a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
       var div1 = document.createElement('div');
-      div1.appendChild(a);
       div1.appendChild(a1);
       div1.className = "dropup-content";
 
@@ -487,7 +480,7 @@ function saveEdit(){
 }
 
 function createBtn(){
-  showHideElement("ds", "none");
+  showHideElement("content", "none");
   showHideElement("detail", "block");
   showHideElement("detail3", "block");
   showHideElement("detail1", "none");
@@ -496,6 +489,13 @@ function createBtn(){
   document.getElementById("name-add").value = "";
   document.getElementById("time-add").value = "";
   document.getElementById("address-add").value = "";
+
+  var dis_content = window.getComputedStyle(content).display;
+  var dis_detail1 = window.getComputedStyle(detail1).display;
+  
+  // if (dis_content === "block") {
+  //   openTasks();
+  // }
 }
 
 function addBtn1(){
