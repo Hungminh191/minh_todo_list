@@ -86,7 +86,6 @@
         </span>
         <form class="body" align="center" id="ds">
             <div class="mn" id="list">
-                ABCDXYZ
                 <?php 
                     foreach ($tasks as $task):
                 ?>
