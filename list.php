@@ -12,13 +12,6 @@
     $conn->query("SET NAMES 'utf8'"); 
     $conn->query("SET CHARACTER SET utf8");
 
-    // $sql = "SELECT * FROM todo_list WHERE user_id = 10";  
-    // $result = mysqli_query($conn, $sql);
-    // $tasks = []; // lưu danh sách công việc của user_id = 10
-    // while ($row = mysqli_fetch_assoc($result)) {
-    //     $tasks[] = $row; 
-    // }
-
     $sql1 = "SELECT COUNT(id) as total FROM todo_list";
     $result1 = mysqli_query($conn, $sql1);
     $row1 = mysqli_fetch_assoc($result1);
@@ -139,16 +132,6 @@
             <div class="mn0" id="list0">
                 
             </div>
-
-            <!-- <div id="pag">
-                <a id="idpage0">&laquo;</a>
-                <a id="idpage1" onclick="showTasksCompleted(document.getElementById('idpage1').textContent, this.id)">1</a>
-                <a id="idpage2" onclick="showTasksCompleted(document.getElementById('idpage2').textContent, this.id)">2</a>
-                <a id="idpage3" onclick="showTasksCompleted(document.getElementById('idpage3').textContent, this.id)">3</a>
-                <a id="idpage4" onclick="showTasksCompleted(document.getElementById('idpage4').textContent, this.id)">4</a>
-                <a id="idpage5" onclick="showTasksCompleted(document.getElementById('idpage5').textContent, this.id)">5</a>
-                <a id="idpage6">&raquo;</a>
-            </div> -->
         </form>
 
         <div class="notification" id="notification">
