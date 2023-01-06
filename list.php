@@ -1,3 +1,57 @@
+<?php 
+    $servername = "localhost:3308";
+    $username = "lcms_admin";
+    $password = "Abc123456@#";
+    $database = "vnpt_tvs";
+
+    $conn = mysqli_connect($servername, $username, $password, $database);
+    if (!$conn){
+        echo ("Kết nối ko thành công!");
+        exit;
+    }
+    $conn->query("SET NAMES 'utf8'"); 
+    $conn->query("SET CHARACTER SET utf8");
+
+    // $sql = "SELECT * FROM todo_list WHERE user_id = 10";  
+    // $result = mysqli_query($conn, $sql);
+    // $tasks = []; // lưu danh sách công việc của user_id = 10
+    // while ($row = mysqli_fetch_assoc($result)) {
+    //     $tasks[] = $row; 
+    // }
+
+    $sql1 = "SELECT COUNT(id) as total FROM todo_list";
+    $result1 = mysqli_query($conn, $sql1);
+    $row1 = mysqli_fetch_assoc($result1);
+    $totalAll = $row1['total'];
+
+    $limit = 3;
+
+    if ($totalAll % $limit == 0) {
+        $totalPage = $totalAll / $limit;
+    } else {
+        $totalPage = (int)($totalAll / $limit) + 1;
+    }
+
+    if (isset($_GET['page']) && !empty($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    } else {
+        $currentPage = 1;
+    }
+
+    $offset = ($currentPage - 1) * $limit;
+     
+    $sql = "SELECT * FROM todo_list ORDER BY id LIMIT $limit OFFSET $offset";
+
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $tasks[] = $row; 
+    }
+
+    $p2 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 2 || $totalPage <= 6) ? 2 : (($_GET['page'] == 5 && $totalPage <= 7) ? 3 : $_GET['page'] - 1);
+    $p3 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 3 || $totalPage <= 6) ? 3 : (($_GET['page'] == 5 && $totalPage <= 7) ? 4 : $_GET['page']);
+    $p4 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] < 4 || $totalPage <= 6) ? 4 : (($_GET['page'] == 5 && $totalPage <= 7) ? 5 : $_GET['page'] + 1);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,39 +64,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+    .active {
+        color: white;
+        background-color: #0983bb;
+    }
+
+    .hide{
+        display: none;
+    }
+</style>
 <body>
     <nav class="navbar">
          <div class="logo">Minh's To-Do List</div>
     </nav>
 
     <h2 id="result"></h2>
-
-    <?php 
-        $servername = "localhost:3308";
-        $username = "lcms_admin";
-        $password = "Abc123456@#";
-        $database = "vnpt_tvs";
-
-        $conn = mysqli_connect($servername, $username, $password, $database);
-        if (!$conn){
-            echo ("Kết nối ko thành công!");
-        } else {
-            echo ("Kết nối thành công");
-        }
-
-        $sql = "SELECT name FROM todo_list";
-
-        $result = mysqli_query($conn, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $data[] = $row; 
-        }
-
-        foreach ($data as $value) {
-            echo ($value['name']);
-        }
-    ?>
-
     <div id="content">
         <span class="title" id="title">
             <span class="list">Danh sách</span>
@@ -56,17 +93,45 @@
         </span>
         <form class="body" align="center" id="ds">
             <div class="mn" id="list">
-
+                ABCDXYZ
+                <?php 
+                    foreach ($tasks as $task):
+                ?>
+                <span class="option1" id="task_<?php echo $task['id'] ?>">
+                    <span onclick="showDetail('name_<?php echo $task['id'] ?>', 'time_<?php echo $task['id'] ?>', 'address_<?php echo $task['id'] ?>', 'task_<?php echo $task['id'] ?>', <?php echo $task['id'] ?>)" class="option">
+                        <span id="name_<?php echo $task['id'] ?>"><?php echo $task['name'] ?></span>
+                        <p id="time_<?php echo $task['id'] ?>"><?php echo $task['time'] ?></p>
+                        <p id="address_<?php echo $task['id'] ?>"><?php echo $task['address'] ?></p>
+                    </span>
+                    <div class="dropup">
+                        <button class="dropbtn"><strong>⋮</strong></button>
+                        <div class="dropup-content"><a onclick="completeTask('name_<?php echo $task['id'] ?>', 'time_<?php echo $task['id'] ?>', 'address_<?php echo $task['id'] ?>', 'task_<?php echo $task['id'] ?>', <?php echo $task['id'] ?>)">Hoàn Thành</a><a onclick="removeTask(<?php echo $task['id'] ?>)">Xoá</a></div>
+                    </div>
+                </span>
+                <?php 
+                    endforeach;
+                ?>
             </div>
-
-            <div id="pag">
-                <a id="page0">&laquo;</a>
-                <a id="page1" onclick="showTasks(document.getElementById('page1').textContent, this.id)">1</a>
-                <a id="page2" onclick="showTasks(document.getElementById('page2').textContent, this.id)">2</a>
-                <a id="page3" onclick="showTasks(document.getElementById('page3').textContent, this.id)">3</a>
-                <a id="page4" onclick="showTasks(document.getElementById('page4').textContent, this.id)">4</a>
-                <a id="page5" onclick="showTasks(document.getElementById('page5').textContent, this.id)">5</a>
-                <a id="page6">&raquo;</a>
+            <div id="pag"> 
+                <a href="list.php?page=<?php echo ($_GET['page'] != 2) ? (($_GET['page'] == 1) ? $_GET['page'] : $_GET['page'] - 1) : 1 ?>">&laquo;</a>
+            
+                <a class="<?php echo (!isset($_GET['page']) || $_GET['page'] == 1) ? 'active' : ''  ?>" href="list.php">1</a>
+            
+                <a class="disable <?php echo ($_GET['page'] <= 3 || $_GET['page'] >= $totalPage - 1 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+            
+                <a class="<?php echo ($_GET['page'] == $p2) ? 'active' : ''; echo ($totalPage <= 3) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p2 ?>"><?php echo $p2 ?></a>
+            
+                <a class="<?php echo ($_GET['page'] == $p3) ? 'active' : ''; echo ($totalPage <= 4) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p3 ?>"><?php echo $p3 ?></a>
+            
+                <a class="<?php echo ($_GET['page'] == $p4) ? 'active' : ''; echo (($_GET['page'] == $totalPage - 2 && $totalPage > 7) || $totalPage <= 5) ? 'hide' : ''?>" href="list.php?page=<?php echo $p4 ?>"><?php echo $p4 ?></a>
+            
+                <a class="disable <?php echo ($_GET['page'] == $totalPage - 2 || $_GET['page'] == $totalPage - 3 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+            
+                <a class="<?php echo ($_GET['page'] == $totalPage - 1) ? 'active' : ''; echo ($totalPage <= 2) ? 'hide' : ''?>" href="list.php?page=<?php echo $totalPage - 1 ?>" ><?php echo $totalPage -1 ?></a>
+            
+                <a class="<?php echo ($_GET['page'] == $totalPage) ? 'active' : ''  ?>" href="list.php?page=<?php echo $totalPage ?>"><?php echo $totalPage ?></a>
+            
+                <a href="list.php?page=<?php echo ((isset($_GET['page'])) ? (($_GET['page'] == $totalPage) ? $_GET['page'] : $_GET['page'] + 1 ) : 2) ?>">&raquo;</a>
             </div>
         </form>
 
@@ -75,7 +140,7 @@
                 
             </div>
 
-            <div id="pag">
+            <!-- <div id="pag">
                 <a id="idpage0">&laquo;</a>
                 <a id="idpage1" onclick="showTasksCompleted(document.getElementById('idpage1').textContent, this.id)">1</a>
                 <a id="idpage2" onclick="showTasksCompleted(document.getElementById('idpage2').textContent, this.id)">2</a>
@@ -83,7 +148,7 @@
                 <a id="idpage4" onclick="showTasksCompleted(document.getElementById('idpage4').textContent, this.id)">4</a>
                 <a id="idpage5" onclick="showTasksCompleted(document.getElementById('idpage5').textContent, this.id)">5</a>
                 <a id="idpage6">&raquo;</a>
-            </div>
+            </div> -->
         </form>
 
         <div class="notification" id="notification">
@@ -250,9 +315,5 @@
         </div>
     </div>
 </body>
-<script src="main.js">
-    const data = "<?php echo $x ?>";
-    const result = document.getElementById("result");
-    result.innerHTML = data;
-</script>
+
 </html>

@@ -109,7 +109,6 @@ html, body{
 }
 
 .body {
-    display: none;
     font-family: "Manrope", sans-serif;
     margin-left: 100px;
     /* border: 1px solid #ccc; */
@@ -118,7 +117,7 @@ html, body{
 #pag {
     text-align: center;
     margin: 0 auto;
-    width: 327px;
+    width: 371px;
     display: block;
     height: 100px;
     margin-top: 66px;
@@ -447,4 +446,13 @@ li {
 
 .mark-tab:hover {
     background-color: rgb(90, 168, 233); ;
+}
+
+.active {
+    color: white;
+    background-color: #0983bb;
+}
+
+.hide{
+    display: none;
 }

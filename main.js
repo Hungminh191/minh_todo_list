@@ -201,242 +201,242 @@ function showDetail(name, time, address, task, num){
   } 
 }
 
-function showTasksSide(page, id_page){
-  idpage = page;
-  document.getElementById("showList").innerHTML = "";
+// function showTasksSide(page, id_page){
+//   idpage = page;
+//   document.getElementById("showList").innerHTML = "";
 
-  for (var i = (page - 1) * 5; i < page * 5; i++) {
-    str_name = "name";
-    str_time = "time";
-    str_address = "address";
-    str_task = "task"
+//   for (var i = (page - 1) * 5; i < page * 5; i++) {
+//     str_name = "name";
+//     str_time = "time";
+//     str_address = "address";
+//     str_task = "task"
 
-    str_name = str_name + i; 
-    str_time = str_time + i; 
-    str_address = str_address + i;
-    str_task = str_task + i;
+//     str_name = str_name + i; 
+//     str_time = str_time + i; 
+//     str_address = str_address + i;
+//     str_task = str_task + i;
 
-    if (tasks[i] != null) {
-      var span2 = document.createElement('span');
-      span2.id = str_name;
+//     if (tasks[i] != null) {
+//       var span2 = document.createElement('span');
+//       span2.id = str_name;
 
-      var node2 = tasks[i]['name'];
-      var title2 = document.createTextNode(node2);
-      span2.appendChild(title2);
+//       var node2 = tasks[i]['name'];
+//       var title2 = document.createTextNode(node2);
+//       span2.appendChild(title2);
 
-      var para1 = document.createElement('p');
-      para1.id = str_time;
+//       var para1 = document.createElement('p');
+//       para1.id = str_time;
       
-      var node1 = tasks[i]['time'];
-      var title1 = document.createTextNode(node1);
-      para1.appendChild(title1);
+//       var node1 = tasks[i]['time'];
+//       var title1 = document.createTextNode(node1);
+//       para1.appendChild(title1);
 
-      var para3 = document.createElement('p');
-      para3.id = str_address;
+//       var para3 = document.createElement('p');
+//       para3.id = str_address;
 
-      var node3 = tasks[i]['address'];
-      var title3 = document.createTextNode(node3);
-      para3.appendChild(title3);
+//       var node3 = tasks[i]['address'];
+//       var title3 = document.createTextNode(node3);
+//       para3.appendChild(title3);
 
-      var span1 = document.createElement('span');
-      span1.appendChild(span2);
-      span1.appendChild(para1);
-      span1.appendChild(para3);
-      span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
-      span1.className = "option";
+//       var span1 = document.createElement('span');
+//       span1.appendChild(span2);
+//       span1.appendChild(para1);
+//       span1.appendChild(para3);
+//       span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
+//       span1.className = "option";
 
-      var a = document.createElement('a');
-      var linkText = document.createTextNode("Hoàn Thành");
-      a.appendChild(linkText);
-      a.href = "#";
+//       var a = document.createElement('a');
+//       var linkText = document.createTextNode("Hoàn Thành");
+//       a.appendChild(linkText);
+//       a.href = "#";
       
-      var a1 = document.createElement('a');
-      var linkText1 = document.createTextNode("Xoá");
-      a1.appendChild(linkText1);
-      a1.setAttribute("onclick", "removeTask(" + i + ")");
+//       var a1 = document.createElement('a');
+//       var linkText1 = document.createTextNode("Xoá");
+//       a1.appendChild(linkText1);
+//       a1.setAttribute("onclick", "removeTask(" + i + ")");
 
-      var div1 = document.createElement('div');
-      div1.appendChild(a);
-      div1.appendChild(a1);
-      div1.className = "dropup-content";
+//       var div1 = document.createElement('div');
+//       div1.appendChild(a);
+//       div1.appendChild(a1);
+//       div1.className = "dropup-content";
 
-      var btn = document.createElement('button');
-      btn.innerHTML = "<strong>&vellip;</strong>";
-      btn.className = "dropbtn";
+//       var btn = document.createElement('button');
+//       btn.innerHTML = "<strong>&vellip;</strong>";
+//       btn.className = "dropbtn";
       
-      var div = document.createElement('div');
-      div.appendChild(btn);
-      div.appendChild(div1);
-      div.className = "dropup";
+//       var div = document.createElement('div');
+//       div.appendChild(btn);
+//       div.appendChild(div1);
+//       div.className = "dropup";
 
-      var span = document.createElement('span');
-      span.appendChild(span1);
-      span.appendChild(div);
-      span.className = "option1";
-      span.id = str_task;
+//       var span = document.createElement('span');
+//       span.appendChild(span1);
+//       span.appendChild(div);
+//       span.className = "option1";
+//       span.id = str_task;
 
-      document.getElementById("showList").appendChild(span);
-    }
-  }
+//       document.getElementById("showList").appendChild(span);
+//     }
+//   }
 
-  markPage(id_page);
+//   markPage(id_page);
 
-  pageNumber();
-}
+//   pageNumber();
+// }
 
-function showTasksCompleted(page, id_page){
-  idpage = page;
-  document.getElementById("list0").innerHTML = "";
+// function showTasksCompleted(page, id_page){
+//   idpage = page;
+//   document.getElementById("list0").innerHTML = "";
 
-  for (var i = (page - 1) * 5; i < page * 5; i++) {
-    str_name = "iname";
-    str_time = "itime";
-    str_address = "iaddress";
-    str_task = "itask"
+//   for (var i = (page - 1) * 5; i < page * 5; i++) {
+//     str_name = "iname";
+//     str_time = "itime";
+//     str_address = "iaddress";
+//     str_task = "itask"
 
-    str_name = str_name + i; 
-    str_time = str_time + i; 
-    str_address = str_address + i;
-    str_task = str_task + i;
+//     str_name = str_name + i; 
+//     str_time = str_time + i; 
+//     str_address = str_address + i;
+//     str_task = str_task + i;
 
-    if (tasksCompleted[i] != null) {
-      var span2 = document.createElement('span');
-      span2.id = str_name;
+//     if (tasksCompleted[i] != null) {
+//       var span2 = document.createElement('span');
+//       span2.id = str_name;
 
-      var node2 = tasksCompleted[i]['name'];
-      var title2 = document.createTextNode(node2);
-      span2.appendChild(title2);
+//       var node2 = tasksCompleted[i]['name'];
+//       var title2 = document.createTextNode(node2);
+//       span2.appendChild(title2);
 
-      var para1 = document.createElement('p');
-      para1.id = str_time;
+//       var para1 = document.createElement('p');
+//       para1.id = str_time;
       
-      var node1 = tasksCompleted[i]['time'];
-      var title1 = document.createTextNode(node1);
-      para1.appendChild(title1);
+//       var node1 = tasksCompleted[i]['time'];
+//       var title1 = document.createTextNode(node1);
+//       para1.appendChild(title1);
 
-      var para3 = document.createElement('p');
-      para3.id = str_address;
+//       var para3 = document.createElement('p');
+//       para3.id = str_address;
 
-      var node3 = tasksCompleted[i]['address'];
-      var title3 = document.createTextNode(node3);
-      para3.appendChild(title3);
+//       var node3 = tasksCompleted[i]['address'];
+//       var title3 = document.createTextNode(node3);
+//       para3.appendChild(title3);
 
-      var span1 = document.createElement('span');
-      span1.appendChild(span2);
-      span1.appendChild(para1);
-      span1.appendChild(para3);
-      span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
-      span1.className = "option";
+//       var span1 = document.createElement('span');
+//       span1.appendChild(span2);
+//       span1.appendChild(para1);
+//       span1.appendChild(para3);
+//       span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
+//       span1.className = "option";
       
-      var a1 = document.createElement('a');
-      var linkText1 = document.createTextNode("Xoá");
-      a1.appendChild(linkText1);
-      a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
+//       var a1 = document.createElement('a');
+//       var linkText1 = document.createTextNode("Xoá");
+//       a1.appendChild(linkText1);
+//       a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
-      var div1 = document.createElement('div');
-      div1.appendChild(a1);
-      div1.className = "dropup-content";
+//       var div1 = document.createElement('div');
+//       div1.appendChild(a1);
+//       div1.className = "dropup-content";
 
-      var btn = document.createElement('button');
-      btn.innerHTML = "<strong>&vellip;</strong>";
-      btn.className = "dropbtn";
+//       var btn = document.createElement('button');
+//       btn.innerHTML = "<strong>&vellip;</strong>";
+//       btn.className = "dropbtn";
       
-      var div = document.createElement('div');
-      div.appendChild(btn);
-      div.appendChild(div1);
-      div.className = "dropup";
+//       var div = document.createElement('div');
+//       div.appendChild(btn);
+//       div.appendChild(div1);
+//       div.className = "dropup";
 
-      var span = document.createElement('span');
-      span.appendChild(span1);
-      span.appendChild(div);
-      span.className = "option1";
-      span.id = str_task;
+//       var span = document.createElement('span');
+//       span.appendChild(span1);
+//       span.appendChild(div);
+//       span.className = "option1";
+//       span.id = str_task;
 
-      document.getElementById("list0").appendChild(span);
-    }
+//       document.getElementById("list0").appendChild(span);
+//     }
 
-    markPage(id_page);
+//     markPage(id_page);
 
-    pageNumber();
-  }
-}
+//     pageNumber();
+//   }
+// }
 
-function showTasksCompletedSide(page, id_page){
-  idpage = page;
-  document.getElementById("showList1").innerHTML = "";
+// function showTasksCompletedSide(page, id_page){
+//   idpage = page;
+//   document.getElementById("showList1").innerHTML = "";
 
-  for (var i = (page - 1) * 5; i < page * 5; i++) {
-    str_name = "iname";
-    str_time = "itime";
-    str_address = "iaddress";
-    str_task = "itask"
+//   for (var i = (page - 1) * 5; i < page * 5; i++) {
+//     str_name = "iname";
+//     str_time = "itime";
+//     str_address = "iaddress";
+//     str_task = "itask"
 
-    str_name = str_name + i; 
-    str_time = str_time + i; 
-    str_address = str_address + i;
-    str_task = str_task + i;
+//     str_name = str_name + i; 
+//     str_time = str_time + i; 
+//     str_address = str_address + i;
+//     str_task = str_task + i;
 
-    if (tasksCompleted[i] != null) {
-      var span2 = document.createElement('span');
-      span2.id = str_name;
+//     if (tasksCompleted[i] != null) {
+//       var span2 = document.createElement('span');
+//       span2.id = str_name;
 
-      var node2 = tasksCompleted[i]['name'];
-      var title2 = document.createTextNode(node2);
-      span2.appendChild(title2);
+//       var node2 = tasksCompleted[i]['name'];
+//       var title2 = document.createTextNode(node2);
+//       span2.appendChild(title2);
 
-      var para1 = document.createElement('p');
-      para1.id = str_time;
+//       var para1 = document.createElement('p');
+//       para1.id = str_time;
       
-      var node1 = tasksCompleted[i]['time'];
-      var title1 = document.createTextNode(node1);
-      para1.appendChild(title1);
+//       var node1 = tasksCompleted[i]['time'];
+//       var title1 = document.createTextNode(node1);
+//       para1.appendChild(title1);
 
-      var para3 = document.createElement('p');
-      para3.id = str_address;
+//       var para3 = document.createElement('p');
+//       para3.id = str_address;
 
-      var node3 = tasksCompleted[i]['address'];
-      var title3 = document.createTextNode(node3);
-      para3.appendChild(title3);
+//       var node3 = tasksCompleted[i]['address'];
+//       var title3 = document.createTextNode(node3);
+//       para3.appendChild(title3);
 
-      var span1 = document.createElement('span');
-      span1.appendChild(span2);
-      span1.appendChild(para1);
-      span1.appendChild(para3);
-      span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
-      span1.className = "option";
+//       var span1 = document.createElement('span');
+//       span1.appendChild(span2);
+//       span1.appendChild(para1);
+//       span1.appendChild(para3);
+//       span1.setAttribute("onclick", "showDetail(" + "'" + str_name + "', '" + str_time + "', '" + str_address + "', '" + str_task + "', " + i + ")");
+//       span1.className = "option";
       
-      var a1 = document.createElement('a');
-      var linkText1 = document.createTextNode("Xoá");
-      a1.appendChild(linkText1);
-      a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
+//       var a1 = document.createElement('a');
+//       var linkText1 = document.createTextNode("Xoá");
+//       a1.appendChild(linkText1);
+//       a1.setAttribute("onclick", "removeTaskCompleted(" + i + ")");
 
-      var div1 = document.createElement('div');
-      div1.appendChild(a1);
-      div1.className = "dropup-content";
+//       var div1 = document.createElement('div');
+//       div1.appendChild(a1);
+//       div1.className = "dropup-content";
 
-      var btn = document.createElement('button');
-      btn.innerHTML = "<strong>&vellip;</strong>";
-      btn.className = "dropbtn";
+//       var btn = document.createElement('button');
+//       btn.innerHTML = "<strong>&vellip;</strong>";
+//       btn.className = "dropbtn";
       
-      var div = document.createElement('div');
-      div.appendChild(btn);
-      div.appendChild(div1);
-      div.className = "dropup";
+//       var div = document.createElement('div');
+//       div.appendChild(btn);
+//       div.appendChild(div1);
+//       div.className = "dropup";
 
-      var span = document.createElement('span');
-      span.appendChild(span1);
-      span.appendChild(div);
-      span.className = "option1";
-      span.id = str_task;
+//       var span = document.createElement('span');
+//       span.appendChild(span1);
+//       span.appendChild(div);
+//       span.className = "option1";
+//       span.id = str_task;
 
-      document.getElementById("showList1").appendChild(span);
-    }
+//       document.getElementById("showList1").appendChild(span);
+//     }
 
-    markPage(id_page);
+//     markPage(id_page);
 
-    pageNumber();
-  }
-}
+//     pageNumber();
+//   }
+// }
 
 function editBtn(){
   showHideElement("detail2", "block");
