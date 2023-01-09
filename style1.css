@@ -81,7 +81,7 @@ html, body{
     margin: 0 auto;
     margin-bottom: 70px;
     margin-right: 70px;
-    margin-left: 487px;
+    margin-left: 21px;
 }
 
 .mn1 {
@@ -117,10 +117,32 @@ html, body{
 #pag {
     text-align: center;
     margin: 0 auto;
-    width: 371px;
+    margin-left: 527px;
+    width: 853px;
     display: block;
-    height: 100px;
+    height: 40px;
     margin-top: 66px;
+    display: flex;
+}
+
+#pag button {
+    height: 37px;
+    width: 77px;
+    border-radius: 13px;
+    background-color: #0983bb;
+    font-weight: bold;
+    color: white;
+}
+
+#pag input {
+    height: 37px;
+    border-radius: 13px;
+    
+}
+
+#pag select {
+    height: 37px;
+    
 }
 
 #pag a {
@@ -456,3 +478,5 @@ li {
 .hide{
     display: none;
 }
+
+

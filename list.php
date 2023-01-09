@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+
     $servername = "localhost:3308";
     $username = "lcms_admin";
     $password = "Abc123456@#";
@@ -17,23 +19,41 @@
     $row1 = mysqli_fetch_assoc($result1);
     $totalAll = $row1['total'];
 
-    $limit = 3;
-
-    if ($totalAll % $limit == 0) {
-        $totalPage = $totalAll / $limit;
-    } else {
-        $totalPage = (int)($totalAll / $limit) + 1;
+    if ($_SESSION['lim'] === null) {
+        $_SESSION['lim'] = 2;
+    } else {        
+        if (isset($_POST['submit'])) {
+            if (!empty($_POST['limit'])) {    
+                $_SESSION['lim'] = $_POST['limit'];
+                $currentPage = 1;
+                $_GET['page'] = 1;
+            }
+        } else {
+            if (isset($_GET['page']) && !empty($_GET['page'])) {
+                $currentPage = $_GET['page'];
+            } else {
+                $currentPage = 1;
+            }
+        }
     }
 
-    if (isset($_GET['page']) && !empty($_GET['page'])) {
-        $currentPage = $_GET['page'];
-    } else {
-        $currentPage = 1;
+    if (isset($_POST['button'])) {
+        if ($_POST['page'] <= $totalPage) {
+            $link = 'list.php?page='.$_POST['page'];
+            header('location:'.$link);
+        }
     }
 
-    $offset = ($currentPage - 1) * $limit;
+    if ($totalAll % $_SESSION['lim'] == 0) {
+        $totalPage = $totalAll / $_SESSION['lim'];
+    } else {
+        $totalPage = (int)($totalAll / $_SESSION['lim']) + 1;
+    }
+
+    $offset = ($currentPage - 1) * $_SESSION['lim'];
      
-    $sql = "SELECT * FROM todo_list ORDER BY id LIMIT $limit OFFSET $offset";
+    $sql = "SELECT * FROM todo_list ORDER BY id LIMIT {$_SESSION['lim']} OFFSET $offset";
+    var_dump($sql);
 
     $result = mysqli_query($conn, $sql);
 
@@ -44,6 +64,13 @@
     $p2 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 2 || $totalPage <= 6) ? 2 : (($_GET['page'] == 5 && $totalPage <= 7) ? 3 : $_GET['page'] - 1);
     $p3 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 3 || $totalPage <= 6) ? 3 : (($_GET['page'] == 5 && $totalPage <= 7) ? 4 : $_GET['page']);
     $p4 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] < 4 || $totalPage <= 6) ? 4 : (($_GET['page'] == 5 && $totalPage <= 7) ? 5 : $_GET['page'] + 1);
+
+    $style = "";
+
+    function showDetail(){
+        $style = "display:block";  
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,16 +84,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<style>
-    .active {
-        color: white;
-        background-color: #0983bb;
-    }
 
-    .hide{
-        display: none;
-    }
-</style>
 <body>
     <nav class="navbar">
          <div class="logo">Minh's To-Do List</div>
@@ -84,7 +102,7 @@
                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
             </button>
         </span>
-        <form class="body" align="center" id="ds">
+        <div class="body" align="center" id="ds">
             <div class="mn" id="list">
                 <?php 
                     foreach ($tasks as $task):
@@ -107,25 +125,51 @@
             <div id="pag"> 
                 <a href="list.php?page=<?php echo ($_GET['page'] != 2) ? (($_GET['page'] == 1) ? $_GET['page'] : $_GET['page'] - 1) : 1 ?>">&laquo;</a>
             
-                <a class="<?php echo (!isset($_GET['page']) || $_GET['page'] == 1) ? 'active' : ''  ?>" href="list.php">1</a>
+                <a id="1" class="<?php echo (!isset($_GET['page']) || $_GET['page'] == 1) ? 'active' : ''  ?>" href="list.php">1</a>
             
-                <a class="disable <?php echo ($_GET['page'] <= 3 || $_GET['page'] >= $totalPage - 1 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+                <a id="2" class="disable <?php echo ($_GET['page'] <= 3 || $_GET['page'] >= $totalPage - 1 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
             
-                <a class="<?php echo ($_GET['page'] == $p2) ? 'active' : ''; echo ($totalPage <= 3) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p2 ?>"><?php echo $p2 ?></a>
+                <a id="3" class="<?php echo ($_GET['page'] == $p2) ? 'active ' : ''; echo ($totalPage <= 3) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p2 ?>"><?php echo $p2 ?></a>
             
-                <a class="<?php echo ($_GET['page'] == $p3) ? 'active' : ''; echo ($totalPage <= 4) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p3 ?>"><?php echo $p3 ?></a>
+                <a id="4" class="<?php echo ($_GET['page'] == $p3) ? 'active ' : ''; echo ($totalPage <= 4) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p3 ?>"><?php echo $p3 ?></a>
             
-                <a class="<?php echo ($_GET['page'] == $p4) ? 'active' : ''; echo (($_GET['page'] == $totalPage - 2 && $totalPage > 7) || $totalPage <= 5) ? 'hide' : ''?>" href="list.php?page=<?php echo $p4 ?>"><?php echo $p4 ?></a>
+                <a id="5" class="<?php echo ($_GET['page'] == $p4) ? 'active ' : ''; echo (($_GET['page'] == $totalPage - 2 && $totalPage > 7) || $totalPage <= 5) ? 'hide' : ''?>" href="list.php?page=<?php echo $p4 ?>"><?php echo $p4 ?></a>
             
-                <a class="disable <?php echo ($_GET['page'] == $totalPage - 2 || $_GET['page'] == $totalPage - 3 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+                <a id="6" class="disable <?php echo ($_GET['page'] == $totalPage - 2 || $_GET['page'] == $totalPage - 3 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
             
-                <a class="<?php echo ($_GET['page'] == $totalPage - 1) ? 'active' : ''; echo ($totalPage <= 2) ? 'hide' : ''?>" href="list.php?page=<?php echo $totalPage - 1 ?>" ><?php echo $totalPage -1 ?></a>
+                <a id="7" class="<?php echo ($_GET['page'] == $totalPage - 1) ? 'active ' : ''; echo ($totalPage <= 2) ? 'hide' : ''?>" href="list.php?page=<?php echo $totalPage - 1 ?>" ><?php echo $totalPage -1 ?></a>
             
-                <a class="<?php echo ($_GET['page'] == $totalPage) ? 'active' : ''  ?>" href="list.php?page=<?php echo $totalPage ?>"><?php echo $totalPage ?></a>
+                <a id="8" class="<?php echo ($_GET['page'] == $totalPage) ? 'active' : ''  ?>" href="list.php?page=<?php echo $totalPage ?>"><?php echo $totalPage ?></a>
             
                 <a href="list.php?page=<?php echo ((isset($_GET['page'])) ? (($_GET['page'] == $totalPage) ? $_GET['page'] : $_GET['page'] + 1 ) : 2) ?>">&raquo;</a>
+                
+                <a>
+                    Nhập số trang
+                </a>
+
+                <a>
+                    <form action="" method="post">
+                        <input type="text" name="page" id="page" size="5px">
+                        <button type="submit" name="button" value="button">Button</button>
+                    </form>
+                </a>
+
+                <a>
+                    <form action="" method="post">
+                        <select name="limit">
+                            <option value="" disabled selected>Choose</option>
+                            <option value=3>3</option>
+                            <option value=5>5</option>
+                            <option value=8>8</option>
+                            <option value=10>10</option>
+                        </select>
+                        
+                        <input type="submit" name="submit" value="Choose">
+                    </form>
+                </a>
+                
             </div>
-        </form>
+        </div>
 
         <form class="body" align="center" id="ds0">
             <div class="mn0" id="list0">
@@ -138,7 +182,7 @@
         </div>
     </div>
 
-    <div id="detail">
+    <div id="detail" style="<?php echo $style ?>">
         <div>
             <table>
                 <tr>
