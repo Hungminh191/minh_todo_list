@@ -84,11 +84,12 @@ html, body{
     margin-left: 21px;
 }
 
-.mn1 {
+.mn0 {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 70px;
     margin-right: 70px;
+    margin-left: 21px;
 }
 
 .btn{
@@ -117,8 +118,8 @@ html, body{
 #pag {
     text-align: center;
     margin: 0 auto;
-    margin-left: 527px;
-    width: 853px;
+    margin-left: 475px;
+    width: 880px;
     display: block;
     height: 40px;
     margin-top: 66px;
@@ -432,7 +433,7 @@ li {
 
 #list0 {
     font-family: "Manrope", sans-serif;
-    margin-left: 490px;
+    margin-right: 25px;
 }
 
 #content {

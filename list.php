@@ -1,76 +1,81 @@
 <?php 
-    session_start();
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
-    $servername = "localhost:3308";
-    $username = "lcms_admin";
-    $password = "Abc123456@#";
-    $database = "vnpt_tvs";
+include_once(__DIR__."/helpers/PaginationHelper.php");
+include_once(__DIR__."/helpers/DbConnector.php");
+include_once(__DIR__."/helpers/TaskModel.php");
 
-    $conn = mysqli_connect($servername, $username, $password, $database);
-    if (!$conn){
-        echo ("Kết nối ko thành công!");
-        exit;
-    }
-    $conn->query("SET NAMES 'utf8'"); 
-    $conn->query("SET CHARACTER SET utf8");
+session_start();
 
-    $sql1 = "SELECT COUNT(id) as total FROM todo_list";
-    $result1 = mysqli_query($conn, $sql1);
-    $row1 = mysqli_fetch_assoc($result1);
-    $totalAll = $row1['total'];
+$conn = DbConnector();
 
-    if ($_SESSION['lim'] === null) {
-        $_SESSION['lim'] = 2;
-    } else {        
-        if (isset($_POST['submit'])) {
-            if (!empty($_POST['limit'])) {    
-                $_SESSION['lim'] = $_POST['limit'];
-                $currentPage = 1;
-                $_GET['page'] = 1;
-            }
-        } else {
-            if (isset($_GET['page']) && !empty($_GET['page'])) {
-                $currentPage = $_GET['page'];
-            } else {
-                $currentPage = 1;
-            }
+$totalAll = countTask();
+
+if ($_SESSION['lim'] === null) {
+    $_SESSION['lim'] = 2;
+    $currentPage = 1;
+} else {
+    if (isset($_POST['submit'])) {
+        if (!empty($_POST['limit'])) {    
+            $_SESSION['lim'] = $_POST['limit'];
+            $currentPage = 1;
+            $_GET['page'] = 1;
         }
-    }
-
-    if (isset($_POST['button'])) {
-        if ($_POST['page'] <= $totalPage) {
-            $link = 'list.php?page='.$_POST['page'];
-            header('location:'.$link);
-        }
-    }
-
-    if ($totalAll % $_SESSION['lim'] == 0) {
-        $totalPage = $totalAll / $_SESSION['lim'];
     } else {
-        $totalPage = (int)($totalAll / $_SESSION['lim']) + 1;
+        if (isset($_GET['page']) && !empty($_GET['page'])) {
+            $currentPage = $_GET['page'];
+        } else {
+            $currentPage = 1;
+        }
     }
+}
 
-    $offset = ($currentPage - 1) * $_SESSION['lim'];
-     
-    $sql = "SELECT * FROM todo_list ORDER BY id LIMIT {$_SESSION['lim']} OFFSET $offset";
-    var_dump($sql);
+if ($totalAll % $_SESSION['lim'] == 0) {
+    $totalPage = $totalAll / $_SESSION['lim'];
+} else {
+    $totalPage = (int)($totalAll / $_SESSION['lim']) + 1;
+}
 
-    $result = mysqli_query($conn, $sql);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $tasks[] = $row; 
+if (isset($_POST['button'])) {
+    if ($_POST['page'] <= $totalPage) {
+        $link = 'list.php?page='.$_POST['page'];
+        header('location:'.$link);
     }
+}
 
-    $p2 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 2 || $totalPage <= 6) ? 2 : (($_GET['page'] == 5 && $totalPage <= 7) ? 3 : $_GET['page'] - 1);
-    $p3 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 3 || $totalPage <= 6) ? 3 : (($_GET['page'] == 5 && $totalPage <= 7) ? 4 : $_GET['page']);
-    $p4 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] < 4 || $totalPage <= 6) ? 4 : (($_GET['page'] == 5 && $totalPage <= 7) ? 5 : $_GET['page'] + 1);
+$offset = ($currentPage - 1) * $_SESSION['lim'];
+    
+$sql = "SELECT * FROM todo_list ORDER BY id LIMIT {$_SESSION['lim']} OFFSET $offset";
 
-    $style = "";
+$result = mysqli_query($conn, $sql);
 
-    function showDetail(){
-        $style = "display:block";  
-    }
+while ($row = mysqli_fetch_assoc($result)) {
+    $tasks[] = $row; 
+}
 
+$p2 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 2 || $totalPage <= 6) ? 2 : (($_GET['page'] == 5 && $totalPage <= 7) ? 3 : $_GET['page'] - 1);
+$p3 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] <= 3 || $totalPage <= 6) ? 3 : (($_GET['page'] == 5 && $totalPage <= 7) ? 4 : $_GET['page']);
+$p4 = (!isset($_GET['page']) || $_GET['page'] >= $totalPage - 1 || $_GET['page'] < 4 || $totalPage <= 6) ? 4 : (($_GET['page'] == 5 && $totalPage <= 7) ? 5 : $_GET['page'] + 1);
+
+$sql0 = "SELECT COUNT(id) as sum FROM todo_completed_list";
+$result0 = mysqli_query($conn, $sql0);
+$row0 = mysqli_fetch_assoc($result0);
+$total = $row0['sum'];
+
+$sql2 = "SELECT * FROM todo_completed_list ORDER BY id";
+
+$result2 = mysqli_query($conn, $sql2);
+
+while ($row2 = mysqli_fetch_assoc($result2)) {
+    $tasksCompleted[] = $row2;
+}
+
+$style = "";
+
+function showDetail(){
+    $style = "display:block";  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,14 +100,14 @@
         <span class="title" id="title">
             <span class="list">Danh sách</span>
             <div class="tabs">
-                <button class="tab" id="tab1" onclick="openTasks('ds', 'page1', 1)">Đang làm</button>
-                <button class="tab" id="tab2" onclick="openTasks('ds0', 'idpage1', 2)">Đã hoàn thành</button>
+                <a class="tab <?php echo ($_GET['tab'] == 1 || !isset($_GET['tab'])) ? 'mark-tab' : '' ?>" id="tab1" href="list.php?tab=1">Đang làm</a>
+                <a class="tab <?php echo ($_GET['tab'] == 2) ? 'mark-tab' : '' ?>" id="tab2" href="list.php?tab=2">Đã hoàn thành</a>
             </div>
             <button class="btn" type="button" onclick="createBtn()">
                 <strong>Tạo mới <i class="fa fa-plus"></i></strong>
             </button>
         </span>
-        <div class="body" align="center" id="ds">
+        <div class="body <?php echo ($_GET['tab'] == 2) ? 'hide' : '' ?>" align="center" id="ds">
             <div class="mn" id="list">
                 <?php 
                     foreach ($tasks as $task):
@@ -123,25 +128,26 @@
                 ?>
             </div>
             <div id="pag"> 
-                <a href="list.php?page=<?php echo ($_GET['page'] != 2) ? (($_GET['page'] == 1) ? $_GET['page'] : $_GET['page'] - 1) : 1 ?>">&laquo;</a>
+                
+                <?php echo PaginationPrevious($totalPage, $_GET['page']); ?>
+
+                <?php echo PaginationOne($totalPage); ?>
             
-                <a id="1" class="<?php echo (!isset($_GET['page']) || $_GET['page'] == 1) ? 'active' : ''  ?>" href="list.php">1</a>
+                <?php echo PaginationTwo($totalPage, $_GET['page']); ?>
             
-                <a id="2" class="disable <?php echo ($_GET['page'] <= 3 || $_GET['page'] >= $totalPage - 1 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+                <?php echo PaginationThree($totalPage, $_GET['page']); ?>
             
-                <a id="3" class="<?php echo ($_GET['page'] == $p2) ? 'active ' : ''; echo ($totalPage <= 3) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p2 ?>"><?php echo $p2 ?></a>
+                <?php echo PaginationFour($totalPage, $_GET['page']); ?>
             
-                <a id="4" class="<?php echo ($_GET['page'] == $p3) ? 'active ' : ''; echo ($totalPage <= 4) ? 'hide' : '' ?>" href="list.php?page=<?php echo $p3 ?>"><?php echo $p3 ?></a>
+                <?php echo PaginationFive($totalPage, $_GET['page']); ?>
             
-                <a id="5" class="<?php echo ($_GET['page'] == $p4) ? 'active ' : ''; echo (($_GET['page'] == $totalPage - 2 && $totalPage > 7) || $totalPage <= 5) ? 'hide' : ''?>" href="list.php?page=<?php echo $p4 ?>"><?php echo $p4 ?></a>
+                <?php echo PaginationSix($totalPage, $_GET['page']); ?>
             
-                <a id="6" class="disable <?php echo ($_GET['page'] == $totalPage - 2 || $_GET['page'] == $totalPage - 3 || $totalPage <= 6) ? 'hide' : '' ?>">...</a>
+                <?php echo PaginationSeven($totalPage, $_GET['page']); ?>
             
-                <a id="7" class="<?php echo ($_GET['page'] == $totalPage - 1) ? 'active ' : ''; echo ($totalPage <= 2) ? 'hide' : ''?>" href="list.php?page=<?php echo $totalPage - 1 ?>" ><?php echo $totalPage -1 ?></a>
+                <?php echo PaginationEight($totalPage, $_GET['page']); ?>
             
-                <a id="8" class="<?php echo ($_GET['page'] == $totalPage) ? 'active' : ''  ?>" href="list.php?page=<?php echo $totalPage ?>"><?php echo $totalPage ?></a>
-            
-                <a href="list.php?page=<?php echo ((isset($_GET['page'])) ? (($_GET['page'] == $totalPage) ? $_GET['page'] : $_GET['page'] + 1 ) : 2) ?>">&raquo;</a>
+                <?php echo PaginationNine($totalPage, $_GET['page']); ?>
                 
                 <a>
                     Nhập số trang
@@ -171,11 +177,27 @@
             </div>
         </div>
 
-        <form class="body" align="center" id="ds0">
+        <div class="body <?php echo ($_GET['tab'] == 1 || !isset($_GET['tab'])) ? 'hide' : '' ?>" align="center" id="ds0">
             <div class="mn0" id="list0">
-                
+                <?php 
+                    foreach ($tasksCompleted as $taskCompleted):
+                ?>
+                <span class="option1" id="task_<?php echo $taskCompleted['id'] ?>">
+                    <span onclick="showDetail('name_<?php echo $taskCompleted['id'] ?>', 'time_<?php echo $taskCompleted['id'] ?>', 'address_<?php echo $taskCompleted['id'] ?>', 'task_<?php echo $taskCompleted['id'] ?>', <?php echo $taskCompleted['id'] ?>)" class="option">
+                        <span id="name_<?php echo $taskCompleted['id'] ?>"><?php echo $taskCompleted['name'] ?></span>
+                        <p id="time_<?php echo $taskCompleted['id'] ?>"><?php echo $taskCompleted['time'] ?></p>
+                        <p id="address_<?php echo $taskCompleted['id'] ?>"><?php echo $taskCompleted['address'] ?></p>
+                    </span>
+                    <div class="dropup">
+                        <button class="dropbtn"><strong>⋮</strong></button>
+                        <div class="dropup-content"><a onclick="completeTask('name_<?php echo $taskCompleted['id'] ?>', 'time_<?php echo $taskCompleted['id'] ?>', 'address_<?php echo $taskCompleted['id'] ?>', 'task_<?php echo $taskCompleted['id'] ?>', <?php echo $taskCompleted['id'] ?>)">Hoàn Thành</a><a onclick="removeTask(<?php echo $taskCompleted['id'] ?>)">Xoá</a></div>
+                    </div>
+                </span>
+                <?php 
+                    endforeach;
+                ?>
             </div>
-        </form>
+        </div>
 
         <div class="notification" id="notification">
             <p id="txt"></p>
